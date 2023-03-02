@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-duplicates
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
