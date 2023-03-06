@@ -16,13 +16,13 @@ export default {
   <div class="navigation" :class="{ active: isActive }">
     <ul>
       <li>
-        <a href="#">
+        <a href="/">
           <span class="icon h3"><i class="fa-solid fa-shrimp"></i></span>
           <span class="title">Shrimping Map</span>
         </a>
       </li>
       <li>
-        <router-link to="#">
+        <router-link to="/">
           <span class="icon"><i class="bi bi-geo-alt-fill"></i></span>
           <span class="title">首頁</span>
         </router-link>
@@ -35,7 +35,7 @@ export default {
         </router-link>
       </li>
       <li>
-        <router-link to="#">
+        <router-link to="shrimps">
           <span class="icon"><i class="bi bi-info-square"></i></span>
           <span class="title">賣蝦資訊</span>
         </router-link>

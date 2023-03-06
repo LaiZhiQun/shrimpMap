@@ -23,6 +23,6 @@ export default {
 
 <style>
 body {
-  background-color: black;
+  background-color: #333;
 }
 </style>

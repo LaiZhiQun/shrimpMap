@@ -18,7 +18,7 @@ export default {
 <template>
   <div class="row">
     <div class="col-xl-8">
-      <svg class="border border-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 2100">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 2100">
         <g id="box" fill="none" stroke="#000" stroke-width="10" />
         <g id="county" fill="#ddd" stroke-width="1" stroke="#000" class="mapCounty">
           <!-- 宜蘭縣 -->
@@ -158,7 +158,7 @@ export default {
       </svg>
     </div>
     <div
-      class="col-xl-4 col-12 bg-withe text-white border border-white d-flex flex-column  align-xl-items-start align-items-end justify-content-start">
+      class="col-xl-4 col-12 bg-withe text-white d-flex flex-column  align-xl-items-start align-items-end justify-content-start">
       <h2 class="d-block m-xl-5">選擇想查詢的地區</h2>
       <h2 class="d-block m-xl-5">{{city}}</h2>
     </div>

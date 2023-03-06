@@ -11,7 +11,7 @@
       <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
       <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
       <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li> -->
-      <li><p>本網站僅為個人學習練習之用，所使用之所有圖片、文字、影音、任何商標、標誌、產品名稱等，均來自於網路上公開資源，均屬於其各自所有者的財產，如有不當使用，請來信告知，我們將立即移除。</p></li>
+      <li><p>本網站僅為個人學習練習之用，所使用之所有圖片、文字、影音、任何商標、標誌、產品名稱等，均來自於網路上公開資源，均屬於其各自所有者的財產，如有不當使用，請來信告知後立即移除。</p></li>
     </ul>
     <!-- <ul class="menu">
       <li><a href="#">Home</a></li>

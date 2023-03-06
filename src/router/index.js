@@ -8,14 +8,14 @@ const routes = [
     component: () => import('../views/FrontLayout.vue'),
     children: [
       {
-        path: 'about',
-        name: 'about',
-        component: () => import('../views/front/AboutView.vue')
-      },
-      {
         path: '',
         name: 'map',
         component: () => import('../views/front/MapView.vue')
+      },
+      {
+        path: 'shrimps',
+        name: 'shrimps',
+        component: () => import('../views/front/ShrimpsView.vue')
       }
     ]
   }
