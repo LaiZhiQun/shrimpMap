@@ -16,6 +16,11 @@ const routes = [
         path: 'shrimps',
         name: 'shrimps',
         component: () => import('../views/front/ShrimpsView.vue')
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('../views/front/LoginView.vue')
       }
     ]
   }

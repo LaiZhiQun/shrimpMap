@@ -35,7 +35,7 @@ export default {
         </router-link>
       </li>
       <li>
-        <router-link to="shrimps">
+        <router-link to="">
           <span class="icon"><i class="bi bi-info-square"></i></span>
           <span class="title">賣蝦資訊</span>
         </router-link>
@@ -47,7 +47,7 @@ export default {
         </router-link>
       </li>
       <li>
-        <router-link to="#">
+        <router-link to="login">
           <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
           <span class="title">登入</span>
         </router-link>
@@ -223,6 +223,7 @@ ul {
     inset: 0px;
     border-left: 10px solid #287bff;
     height: 65vh;
+    z-index: 3000;
   }
 }
 </style>

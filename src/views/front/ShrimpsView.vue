@@ -1,73 +1,38 @@
+<script>
+import { mapState } from 'pinia'
+import useIntoCityStore from '../../stores/intoCity'
+import { RouterLink } from 'vue-router'
+// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
+export default {
+  data () {
+    return {
+
+    }
+  },
+  components: {
+    RouterLink
+  },
+  computed: {
+    ...mapState(useIntoCityStore, ['shrimpFilter'])
+  }
+}
+</script>
 <template>
   <div class="container">
-    <div class="card">
+    <div v-for="shrimp in shrimpFilter" :key="shrimp.id" class="card">
       <div class="box">
         <div class="content">
-          <h2>台中市</h2>
-          <h3>東明釣蝦場</h3>
-          <p>台中市北屯區經貿路一段688號</p>
-          <p>電話:0412345678</p>
-          <p>營業時間: 24H</p>
-          <p>公蝦池</p>
+          <h2>{{ shrimp.category }}</h2>
+          <h3>{{ shrimp.title }}</h3>
+          <p>地址: {{ shrimp.content }}</p>
+          <p>電話: {{ shrimp.phone }}</p>
+          <p>種類: {{ shrimp.description }}</p>
           <div>
-            <router-link to="#">
-              <span class="text-center">查看細節</span>
+            <RouterLink to="#">
+              <span>店家資訊</span>
               <div class="wave"></div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="box">
-        <div class="content">
-          <h2>台中市</h2>
-          <h3>東明釣蝦場</h3>
-          <p>台中市北屯區經貿路一段688號</p>
-          <p>電話:0412345678</p>
-          <p>營業時間: 24H</p>
-          <p>公蝦池</p>
-          <div>
-            <router-link to="#">
-              <span class="text-center">查看細節</span>
-              <div class="wave"></div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="box">
-        <div class="content">
-          <h2>台中市</h2>
-          <h3>東明釣蝦場</h3>
-          <p>台中市北屯區經貿路一段688號</p>
-          <p>電話:0412345678</p>
-          <p>營業時間: 24H</p>
-          <p>公蝦池</p>
-          <div>
-            <router-link to="#">
-              <span class="text-center">查看細節</span>
-              <div class="wave"></div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="box">
-        <div class="content">
-          <h2>台中市</h2>
-          <h3>東明釣蝦場</h3>
-          <p>台中市北屯區經貿路一段688號</p>
-          <p>電話:0412345678</p>
-          <p>營業時間: 24H</p>
-          <p>公蝦池</p>
-          <div>
-            <router-link to="#">
-              <span class="text-center">查看細節</span>
-              <div class="wave"></div>
-            </router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -206,7 +171,7 @@ body {
 a {
   position: relative;
   display: block;
-  padding: 10px 60px;
+  padding: 10px 65px;
   border: 2px solid #287bff;
   border-radius: 20px;
   text-transform: uppercase;
