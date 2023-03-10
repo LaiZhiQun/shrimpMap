@@ -35,7 +35,7 @@ export default {
         </router-link>
       </li>
       <li>
-        <router-link to="">
+        <router-link to="#">
           <span class="icon"><i class="bi bi-info-square"></i></span>
           <span class="title">賣蝦資訊</span>
         </router-link>

@@ -2,14 +2,8 @@
 import { mapState } from 'pinia'
 import useIntoCityStore from '../../stores/intoCity'
 import { RouterLink } from 'vue-router'
-// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
-  data () {
-    return {
-
-    }
-  },
   components: {
     RouterLink
   },
@@ -20,7 +14,7 @@ export default {
 </script>
 <template>
   <div class="container">
-    <div v-for="shrimp in shrimpFilter" :key="shrimp.id" class="card">
+    <div v-for="shrimp in shrimpFilter" :key="shrimp.id" class="custom-card">
       <div class="box">
         <div class="content">
           <h2>{{ shrimp.category }}</h2>
@@ -29,7 +23,7 @@ export default {
           <p>電話: {{ shrimp.phone }}</p>
           <p>種類: {{ shrimp.description }}</p>
           <div>
-            <RouterLink to="#">
+            <RouterLink :to="`/shrimp/${shrimp.id}`">
               <span>店家資訊</span>
               <div class="wave"></div>
             </RouterLink>
@@ -65,7 +59,7 @@ body {
   margin: 40px 0;
 }
 
-.container .card {
+.container .custom-card {
   position: relative;
   min-width: 320px;
   height: 440px;
@@ -77,7 +71,7 @@ body {
   margin: 30px;
 }
 
-.container .card .box {
+.container .custom-card .box {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -94,7 +88,7 @@ body {
   overflow: hidden;
 }
 
-.container .card .box::before {
+.container .custom-card .box::before {
   content: '';
   position: absolute;
   background-color: rgba(255, 255, 255, 0.05);
@@ -105,17 +99,17 @@ body {
   pointer-events: none;
 }
 
-/* .container .card .box:hover {
+/* .container .custom-card .box:hover {
   transform: translateY(-50px);
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
 } */
 
-/* .container .card .box .content {
+/* .container .custom-card .box .content {
   padding: 20px;
   text-align: center;
 } */
 
-.container .card .box .content h2 {
+.container .custom-card .box .content h2 {
   position: absolute;
   top: 0px;
   /* custom */
@@ -127,7 +121,7 @@ body {
   /* custom */
 }
 
-.container .card .box .content h3 {
+.container .custom-card .box .content h3 {
   font-size: 1.8rem;
   color: rgba(255, 255, 255, 0.5);
   z-index: 1;
@@ -135,7 +129,7 @@ body {
   margin-top: 5rem; /* custom */
 }
 
-.container .card .box .content p {
+.container .custom-card .box .content p {
   font-size: 16px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.5);
@@ -144,7 +138,7 @@ body {
   /* margin-top: 10px; */
 }
 
-/* .container .card .box .content a {
+/* .container .custom-card .box .content a {
   position: relative;
   display: inline-block;
   padding: 8px 20px;
@@ -157,15 +151,15 @@ body {
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.container .card:nth-child(1) .box .content a {
+.container .custom-card:nth-child(1) .box .content a {
   background-color: #2196f3;
 }
 
-.container .card:nth-child(2) .box .content a {
+.container .custom-card:nth-child(2) .box .content a {
   background-color: #e91e63;
 }
 
-.container .card:nth-child(3) .box .content a {
+.container .custom-card:nth-child(3) .box .content a {
   background-color: #97dc47;
 } */
 a {

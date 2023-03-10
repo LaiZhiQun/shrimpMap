@@ -21,6 +21,11 @@ const routes = [
         path: 'login',
         name: 'login',
         component: () => import('../views/front/LoginView.vue')
+      },
+      {
+        path: 'shrimp/:id',
+        name: 'shrimp',
+        component: () => import('../views/front/ShrimpView.vue')
       }
     ]
   }
