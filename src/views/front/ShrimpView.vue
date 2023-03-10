@@ -20,7 +20,7 @@ export default {
       })
     },
     getBusinessHour (day) {
-      const hour = this.business_data[day.toLowerCase()]
+      const hour = this.business_data[day]
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${hour || this.business_data.all}`
     }
@@ -33,13 +33,13 @@ export default {
 <template>
   <div class="container mt-8">
     <div class="row">
-      <div class="col-6 text-white">
+      <div class="col-xl-6 text-white">
         <div class="d-flex justify-content-center">
           <img style="width: 400px;" class="d-block img-fluid"
             :src="shrimp.imageUrl"
             alt="">
         </div>
-        <div class="m-5 ps-6">
+        <div class="m-5 ps-xl-6 ps-3">
           <h4>其他資訊</h4>
           <div class="row mt-3">
             <div class="col-6">
@@ -58,20 +58,20 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-6 text-white  position-relative">
+      <div class="col-xl-6 text-white  position-relative">
         <a class="text-decoration-none d-block p-3 position-absolute bottom-0 end-0 text-white" href="#"><i class="bi bi-clipboard"></i> 我要賣蝦</a>
-        <div class="m-5">
+        <div class="m-5 px-3 px-xl-0">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
           <p>{{ shrimp.phone }}</p>
         </div>
         <hr class="mx-5 opacity-25">
-        <div class="m-5">
+        <div class="m-5 p-3 p-xl-0">
           <h4>優惠套票</h4>
           <div class="mt-4">
             <button type="button" class="btn btn-primary">1小時</button>
-            <button type="button" class="btn ms-4 btn-primary" disabled>2小時</button>
-            <button type="button" class="btn ms-4 btn-primary" disabled>3小時</button>
+            <button type="button" class="btn ms-xl-4 ms-1 btn-primary" disabled>2小時</button>
+            <button type="button" class="btn ms-xl-4 ms-1 btn-primary" disabled>3小時</button>
           </div>
           <div class="mt-4">
             <div class="form-check form-check-inline">
@@ -92,13 +92,14 @@ export default {
           </div>
         </div>
         <div class="m-5">
-          <span class="d-inline-block me-5">數量</span>
-          <a class="d-inline-block border border-white py-3 px-4" href="#"><i class="bi bi-dash-lg"></i></a>
-          <span class="d-inline-block border border-white py-3 px-8">1</span>
-          <a class="d-inline-block border border-white py-3 px-4" href="#"><i class="bi bi-plus-lg"></i></a>
+          <span class="d-inline-block me-xl-5 me-2 ms-3 ms-xl-0">數量</span>
+          <a class="d-inline-block border border-white py-xl-3 px-xl-4 py-1 px-2" href="#"><i class="bi bi-dash-lg"></i></a>
+          <span class="d-inline-block border border-white py-xl-3 px-xl-8 py-1 px-3">1</span>
+          <a class="d-inline-block border border-white py-xl-3 px-xl-4 py-1 px-2" href="#"><i class="bi bi-plus-lg"></i></a>
         </div>
-        <div class="m-5">
-          <span class="fs-4">NT$ 500</span>
+        <div class="m-5 ps-3 ps-xl-0">
+          <span class="d-block fs-6 text-decoration-line-through">原價NT$ {{ shrimp.origin_price }}</span>
+          <span class="fs-4">NT$ {{ shrimp.price }}</span>
           <button class="btn btn-lg btn-outline-primary ms-5" type="button"><i class="bi bi-cart4"></i><span class="text-white ms-2">加入購物車</span></button>
         </div>
       </div>
