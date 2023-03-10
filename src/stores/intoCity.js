@@ -1,4 +1,4 @@
-// import axios from 'axios'
+
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import router from '../router'
@@ -21,7 +21,7 @@ const useIntoCityStore = defineStore('intoCity', {
         this.shrimpFilter = this.shrimps.filter(function (item) {
           return item.category === city
         })
-        router.push('shrimps')
+        router.push({ path: '/shrimps', query: { city } })
       })
     }
   }

@@ -20,7 +20,7 @@ export default {
       })
     },
     getBusinessHour (day) {
-      const hour = this.business_data[day]
+      const hour = this.business_data[day.toLowerCase()]
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${hour || this.business_data.all}`
     }
@@ -31,9 +31,9 @@ export default {
 }
 </script>
 <template>
-  <div class="container">
+  <div class="container mt-8">
     <div class="row">
-      <div class="col-6 border border-white text-white">
+      <div class="col-6 text-white">
         <div class="d-flex justify-content-center">
           <img style="width: 400px;" class="d-block img-fluid"
             :src="shrimp.imageUrl"
@@ -58,14 +58,14 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-6 border text-white  position-relative">
+      <div class="col-6 text-white  position-relative">
         <a class="text-decoration-none d-block p-3 position-absolute bottom-0 end-0 text-white" href="#"><i class="bi bi-clipboard"></i> 我要賣蝦</a>
         <div class="m-5">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
           <p>{{ shrimp.phone }}</p>
         </div>
-        <hr class="border-white">
+        <hr class="mx-5 opacity-25">
         <div class="m-5">
           <h4>優惠套票</h4>
           <div class="mt-4">
@@ -112,4 +112,9 @@ div a i {
 
 div a:hover i {
   color: #0d6efd
-}</style>
+}
+hr {
+    border: 0;
+    border-top: 1px dashed #a2a9b6;
+}
+</style>

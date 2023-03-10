@@ -9,6 +9,13 @@ export default {
   },
   computed: {
     ...mapState(useIntoCityStore, ['shrimpFilter'])
+  },
+  mounted () {
+    const { city } = this.$route.query
+    console.log(this.$route)
+    if (city) {
+      useIntoCityStore().intoCity(city)
+    }
   }
 }
 </script>

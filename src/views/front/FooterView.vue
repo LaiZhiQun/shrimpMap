@@ -49,7 +49,7 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 30vh; /* custom */
+  margin-top: 50vh; /* custom */
 }
 
 /* footer .social_icon, footer .menu {
