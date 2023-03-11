@@ -1,9 +1,13 @@
 <script>
+import { RouterLink } from 'vue-router'
 export default {
   data () {
     return {
       isActive: false
     }
+  },
+  components: {
+    RouterLink
   },
   methods: {
     toggleActive () {
@@ -22,41 +26,41 @@ export default {
         </a>
       </li>
       <li>
-        <router-link to="/">
+        <RouterLink to="/">
           <span class="icon"><i class="bi bi-geo-alt-fill"></i></span>
           <span class="title">首頁</span>
-        </router-link>
+        </RouterLink>
       </li>
       <li>
-        <router-link to="#">
+        <RouterLink to="#">
           <span class="icon"><i class="bi bi-search"></i></span>
           <input class="form-control ms-4 border-0 rounded-3" type="text" placeholder="搜尋店家" aria-label="Search">
             <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
-        </router-link>
+        </RouterLink>
       </li>
       <li>
-        <router-link to="#">
+        <RouterLink to="#">
           <span class="icon"><i class="bi bi-info-square"></i></span>
           <span class="title">賣蝦資訊</span>
-        </router-link>
+        </RouterLink>
       </li>
       <li>
-        <router-link to="#">
+        <RouterLink to="#">
           <span class="icon"><i class="bi bi-cart4"></i></span>
           <span class="title">購物車</span>
-        </router-link>
+        </RouterLink>
       </li>
       <li>
-        <router-link to="login">
+        <RouterLink to="/login">
           <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
           <span class="title">登入</span>
-        </router-link>
+        </RouterLink>
       </li>
       <li>
-        <router-link to="#">
+        <RouterLink to="#">
           <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
           <span class="title">登出</span>
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
     <div @click.prevent="toggleActive" class="toggle"></div>
@@ -224,6 +228,20 @@ ul {
     border-left: 10px solid #287bff;
     height: 65vh;
     z-index: 3000;
+    width: 50px;
+    top: 5rem;
+    opacity: 50%;
+  }
+  .navigation.active {
+    opacity: 100%;
+  }
+  .navigation ul li a .icon {
+    min-width: 30px;
+  }
+  .toggle {
+    right: 10px;
+    width: 30px;
+    height: 30px;
   }
 }
 </style>

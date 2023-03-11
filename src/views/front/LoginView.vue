@@ -194,7 +194,7 @@ section .signin .content .form .inputBx i {
 } */
 @media (max-width: 576px) {
   section {
-    padding-left: 6rem;
+    padding-left: 3rem;
     height: 50vh;
   }
 
