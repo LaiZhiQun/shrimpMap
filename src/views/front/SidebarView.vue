@@ -45,7 +45,7 @@ export default {
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="#">
+        <RouterLink to="/cart">
           <span class="icon"><i class="bi bi-cart4"></i></span>
           <span class="title">購物車</span>
         </RouterLink>

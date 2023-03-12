@@ -5,7 +5,8 @@ export default {
     return {
       shrimp: {},
       business_data: {},
-      days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
+      days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
+      ticketNum: 1
     }
   },
   methods: {
@@ -20,12 +21,28 @@ export default {
       })
     },
     getBusinessHour (day) {
-      const hour = this.business_data[day]
       const isRest = this.business_data.rest === day
-      return isRest ? `${day}：休息` : `${day}：${hour || this.business_data.all}`
+      return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
-    addToCart () {
-      console.log(111)
+    addToCart (id) {
+      const data = {
+        product_id: id,
+        qty: this.ticketNum
+      }
+      this.$http({
+        method: 'post',
+        url: `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`,
+        data: { data }
+      }).then(res => {
+        alert(res.data.message)
+      })
+    },
+    adjustmentTicket (state) {
+      if (state === '+') {
+        this.ticketNum++
+      } else if (state === '-' && this.ticketNum > 1) {
+        this.ticketNum--
+      }
     }
   },
   mounted () {
@@ -96,14 +113,14 @@ export default {
         </div>
         <div class="m-5">
           <span class="d-inline-block pe-3">數量</span>
-          <a class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
-          <span class="d-inline-block border border-white py-xl-3 px-xl-8 py-2 px-4">1</span>
-          <a class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-plus-lg"></i></a>
+          <a @click.prevent="adjustmentTicket('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
+          <input type="number" v-model="ticketNum" class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>
+          <a @click.prevent="adjustmentTicket('+')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-plus-lg"></i></a>
         </div>
         <div class="m-5 ps-3 ps-xl-0">
           <span class="d-block fs-6 text-decoration-line-through">原價NT$ {{ shrimp.origin_price }}</span>
           <span class="fs-4">NT$ {{ shrimp.price }}</span>
-          <button @click.prevent="addToCart" class="btn btn-lg btn-outline-primary ms-xl-5 my-3 my-lx-0" type="button"><i class="bi bi-cart4"></i><span class="text-white ms-2">加入購物車</span></button>
+          <button @click.prevent="addToCart(shrimp.id)" class="btn btn-lg btn-outline-primary ms-xl-5 my-3 my-lx-0" type="button"><i class="bi bi-cart4"></i><span class="text-white ms-2">加入購物車</span></button>
         </div>
       </div>
     </div>

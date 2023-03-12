@@ -26,6 +26,11 @@ const routes = [
         path: 'shrimp/:id',
         name: 'shrimp',
         component: () => import('../views/front/ShrimpView.vue')
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: () => import('../views/front/CartView.vue')
       }
     ]
   }
