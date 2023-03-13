@@ -20,6 +20,7 @@ const useCartStore = defineStore('cart', {
         this.cart = res.data.data
       })
     },
+    // 購物車頁面的數量調整
     adjustmentTicket (state, cartId, qty, productId) {
       const data = {
         product_id: productId,
@@ -63,7 +64,7 @@ const useCartStore = defineStore('cart', {
       } else {
         data = {
           product_id: id,
-          qty: this.cart.carts[itemIndex].qty += this.ticketNum
+          qty: this.cart.carts[itemIndex].qty += this.ticketNum - this.cart.carts[itemIndex].qty
         }
       }
       axios({
@@ -78,6 +79,14 @@ const useCartStore = defineStore('cart', {
         }, 1000)
         this.shakeState = true
       })
+    },
+    // 單一產品頁面的數量調整
+    adjustmentTickets (state) {
+      if (state === '+') {
+        this.ticketNum++
+      } else if (state === '-' && this.ticketNum > 1) {
+        this.ticketNum--
+      }
     }
   }
 })

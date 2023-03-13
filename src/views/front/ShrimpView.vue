@@ -26,14 +26,7 @@ export default {
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
-    adjustmentTicket (state) {
-      if (state === '+') {
-        this.ticketNum++
-      } else if (state === '-' && this.ticketNum > 1) {
-        this.ticketNum--
-      }
-    },
-    ...mapActions(useCartStore, ['addToCart'])
+    ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets'])
   },
   computed: {
     ...mapState(useCartStore, ['ticketNum'])
@@ -106,9 +99,9 @@ export default {
         </div>
         <div class="m-5">
           <span class="d-inline-block pe-3">數量</span>
-          <a @click.prevent="adjustmentTicket('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
+          <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
           <input type="number" v-model="ticketNum" class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>
-          <a @click.prevent="adjustmentTicket('+')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-plus-lg"></i></a>
+          <a @click.prevent="adjustmentTickets('+')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-plus-lg"></i></a>
         </div>
         <div class="m-5 ps-3 ps-xl-0">
           <span class="d-block fs-6 text-decoration-line-through">原價NT$ {{ shrimp.origin_price }}</span>

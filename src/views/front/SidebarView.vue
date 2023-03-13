@@ -265,7 +265,7 @@ ul {
   left: 50%;
 }
 .custom-shake {
-  animation: shake 0.3s linear;
+  animation: shake 0.5s linear;
   animation-iteration-count: 1;
 }
 @keyframes shake {
