@@ -6,7 +6,8 @@ export default {
       shrimp: {},
       business_data: {},
       days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
-      ticketNum: 1
+      ticketNum: 1,
+      cart: {}
     }
   },
   methods: {
@@ -25,9 +26,18 @@ export default {
       return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
     addToCart (id) {
-      const data = {
-        product_id: id,
-        qty: this.ticketNum
+      const itemIndex = this.cart.carts.findIndex(item => item.product.id === id)
+      let data = {}
+      if (itemIndex === -1) {
+        data = {
+          product_id: id,
+          qty: this.ticketNum
+        }
+      } else {
+        data = {
+          product_id: id,
+          qty: this.cart.carts[itemIndex].qty += this.ticketNum
+        }
       }
       this.$http({
         method: 'post',
@@ -43,10 +53,19 @@ export default {
       } else if (state === '-' && this.ticketNum > 1) {
         this.ticketNum--
       }
+    },
+    getCarts () {
+      this.$http({
+        method: 'get',
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
+      }).then(res => {
+        this.cart = res.data.data
+      })
     }
   },
   mounted () {
     this.getShrimp()
+    this.getCarts()
   }
 }
 </script>
