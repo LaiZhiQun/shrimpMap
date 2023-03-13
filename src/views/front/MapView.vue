@@ -8,9 +8,6 @@ export default {
       city: ''
     }
   },
-  provide: {
-    city: '台北市'
-  },
   methods: {
     addCity (c) {
       this.city = c

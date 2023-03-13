@@ -1,13 +1,14 @@
 <script>
+import { mapActions, mapState } from 'pinia'
+import useCartStore from '../../stores/cart'
+
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
       shrimp: {},
       business_data: {},
-      days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'],
-      ticketNum: 1,
-      cart: {}
+      days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
     }
   },
   methods: {
@@ -25,28 +26,6 @@ export default {
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
-    addToCart (id) {
-      const itemIndex = this.cart.carts.findIndex(item => item.product.id === id)
-      let data = {}
-      if (itemIndex === -1) {
-        data = {
-          product_id: id,
-          qty: this.ticketNum
-        }
-      } else {
-        data = {
-          product_id: id,
-          qty: this.cart.carts[itemIndex].qty += this.ticketNum
-        }
-      }
-      this.$http({
-        method: 'post',
-        url: `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`,
-        data: { data }
-      }).then(res => {
-        alert(res.data.message)
-      })
-    },
     adjustmentTicket (state) {
       if (state === '+') {
         this.ticketNum++
@@ -54,18 +33,13 @@ export default {
         this.ticketNum--
       }
     },
-    getCarts () {
-      this.$http({
-        method: 'get',
-        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
-      }).then(res => {
-        this.cart = res.data.data
-      })
-    }
+    ...mapActions(useCartStore, ['addToCart'])
+  },
+  computed: {
+    ...mapState(useCartStore, ['ticketNum'])
   },
   mounted () {
     this.getShrimp()
-    this.getCarts()
   }
 }
 </script>

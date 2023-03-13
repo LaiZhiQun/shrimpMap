@@ -1,56 +1,18 @@
 <script>
 // import { debounce } from 'lodash'
+import { mapActions, mapState } from 'pinia'
 import CartToForm from '../../components/CartToForm.vue'
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+import useCartStore from '../../stores/cart'
+
 export default {
-  data () {
-    return {
-      cart: {}
-    }
-  },
   components: {
     CartToForm
   },
+  computed: {
+    ...mapState(useCartStore, ['cart'])
+  },
   methods: {
-    getCarts () {
-      this.$http({
-        method: 'get',
-        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
-      }).then(res => {
-        this.cart = res.data.data
-      })
-    },
-    adjustmentTicket (state, cartId, qty, productId) {
-      const data = {
-        product_id: productId,
-        qty
-      }
-      if (state === '+') {
-        data.qty++
-        this.updateCartNum(data, cartId)
-      } else if (state === '-') {
-        data.qty--
-        this.updateCartNum(data, cartId)
-      }
-    },
-    updateCartNum (data, cartId) {
-      this.$http({
-        method: 'put',
-        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
-        data: { data }
-      }).then(res => {
-        this.getCarts()
-      })
-    },
-    removeCart (cartId) {
-      this.$http({
-        method: 'delete',
-        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`
-      }).then(res => {
-        alert('已刪除該品項')
-        this.getCarts()
-      })
-    }
+    ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum'])
   },
   mounted () {
     this.getCarts()

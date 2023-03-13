@@ -1,5 +1,8 @@
 <script>
+import { mapActions, mapState } from 'pinia'
 import { RouterLink } from 'vue-router'
+import useCartStore from '../../stores/cart'
+// import useAddToCartStore from '../../stores/addToCart'
 export default {
   data () {
     return {
@@ -12,7 +15,14 @@ export default {
   methods: {
     toggleActive () {
       this.isActive = !this.isActive
-    }
+    },
+    ...mapActions(useCartStore, ['getCarts'])
+  },
+  computed: {
+    ...mapState(useCartStore, ['cart'])
+  },
+  mounted () {
+    this.getCarts()
   }
 }
 </script>
@@ -46,7 +56,13 @@ export default {
       </li>
       <li>
         <RouterLink to="/cart">
-          <span class="icon"><i class="bi bi-cart4"></i></span>
+          <span class="icon">
+            <span class="shake-position position-absolute badge rounded-circle bg-danger">
+            {{ Array.isArray(this.cart.carts) ? this.cart.carts.length : '0' }}
+            <span class="visually-hidden">unread messages</span>
+            </span>
+            <i class="bi bi-cart4"></i>
+          </span>
           <span class="title">購物車</span>
         </RouterLink>
       </li>
@@ -242,6 +258,49 @@ ul {
     right: 10px;
     width: 30px;
     height: 30px;
+  }
+}
+.shake-position{
+  top: 0;
+  left: 50%;
+}
+.custom-shake {
+  animation: shake 0.3s linear;
+  animation-iteration-count: 1;
+}
+@keyframes shake {
+  0% {
+    left: 40%;
+  }
+  10% {
+    left: 60%;
+  }
+  20% {
+    left: 40%;
+  }
+  30% {
+    left: 60%;
+  }
+  40% {
+    left: 40%;
+  }
+  50% {
+    left: 60%;
+  }
+  60% {
+    left: 40%;
+  }
+  70% {
+    left: 60%;
+  }
+  80% {
+    left: 40%;
+  }
+  90% {
+    left: 60%;
+  }
+  100% {
+    left: 40%;
   }
 }
 </style>
