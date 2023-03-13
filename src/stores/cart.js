@@ -7,7 +7,8 @@ const useCartStore = defineStore('cart', {
   state: () => {
     return {
       cart: {},
-      ticketNum: 1
+      ticketNum: 1,
+      shakeState: false
     }
   },
   actions: {
@@ -71,7 +72,11 @@ const useCartStore = defineStore('cart', {
         data: { data }
       }).then(res => {
         alert(res.data.message)
-        this.getCarts()
+        this.getCarts() // 重新渲染購物車內產品的數量，使 sidebar 的數字即時更新
+        setTimeout(() => {
+          this.shakeState = false
+        }, 1000)
+        this.shakeState = true
       })
     }
   }

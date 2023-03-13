@@ -19,7 +19,7 @@ export default {
     ...mapActions(useCartStore, ['getCarts'])
   },
   computed: {
-    ...mapState(useCartStore, ['cart'])
+    ...mapState(useCartStore, ['cart', 'shakeState'])
   },
   mounted () {
     this.getCarts()
@@ -57,7 +57,7 @@ export default {
       <li>
         <RouterLink to="/cart">
           <span class="icon">
-            <span class="shake-position position-absolute badge rounded-circle bg-danger">
+            <span :class="{ 'custom-shake': shakeState }" class="shake-position position-absolute badge rounded-circle bg-danger">
             {{ Array.isArray(this.cart.carts) ? this.cart.carts.length : '0' }}
             <span class="visually-hidden">unread messages</span>
             </span>
