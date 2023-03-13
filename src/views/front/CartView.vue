@@ -1,11 +1,15 @@
 <script>
 // import { debounce } from 'lodash'
+import CartToForm from '../../components/CartToForm.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
       cart: {}
     }
+  },
+  components: {
+    CartToForm
   },
   methods: {
     getCarts () {
@@ -95,6 +99,7 @@ export default {
       </tr>
     </tfoot>
     </table>
+    <CartToForm></CartToForm>
   </div>
   <div v-else class="d-flex justify-content-center align-items-center">
     <h2 class="text-white py-10">目前購物車是空的</h2>

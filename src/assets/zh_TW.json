@@ -1,0 +1,32 @@
+{
+  "code": "zh_TW",
+  "messages": {
+    "_default": "此欄位的值無效",
+    "alpha": "此欄位須以英文組成",
+    "alpha_dash": "此欄位須以英數、破折號及底線組成",
+    "alpha_num": "此欄位須以英數組成",
+    "alpha_spaces": "此欄位須以英文及空格組成",
+    "between": "此欄位須介於 0:{min} 至 1:{max}之間",
+    "confirmed": " 此欄位不一致",
+    "digits": "此欄位須為 0:{length} 位數字",
+    "dimensions": "此欄位圖片尺寸不正確。須為 0:{width} x 1:{height} 像素",
+    "email": "此欄位須為有效的電子信箱",
+    "not_one_of": "此欄位的選項無效",
+    "ext": "此欄位須為有效的檔案",
+    "image": "此欄位須為圖片",
+    "one_of": "此欄位的選項無效",
+    "integer": "此欄位須為整數",
+    "length": "此欄位的長度須為 0:{length}",
+    "max": "此欄位不能大於 0:{length} 個字元",
+    "max_value": "此欄位不得大於 0:{max}",
+    "mimes": "此欄位須為有效的檔案類型",
+    "min": "此欄位不能小於 0:{length} 個字元",
+    "min_value": "此欄位不得小於 0:{min}",
+    "numeric": "此欄位須為數字",
+    "regex": "此欄位的格式錯誤",
+    "required": "此欄位為必填",
+    "required_if": "此欄位為必填",
+    "size": "此欄位的檔案須小於 0:{size}KB",
+    "url": "此欄位須為有效的URL"
+  }
+}
