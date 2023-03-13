@@ -1,5 +1,5 @@
 <script>
-import debounce from 'lodash/debounce'
+// import { debounce } from 'lodash'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -14,7 +14,6 @@ export default {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
       }).then(res => {
         this.cart = res.data.data
-        console.log(this.cart)
       })
     },
     adjustmentTicket (state, cartId, qty, productId) {
@@ -36,7 +35,15 @@ export default {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
         data: { data }
       }).then(res => {
-        alert('已修改數量')
+        this.getCarts()
+      })
+    },
+    removeCart (cartId) {
+      this.$http({
+        method: 'delete',
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`
+      }).then(res => {
+        alert('已刪除該品項')
         this.getCarts()
       })
     }
@@ -47,7 +54,7 @@ export default {
 }
 </script>
 <template>
-  <div class="container">
+  <div v-if="cart.carts && cart.carts.length > 0" class="container">
     <table class="table bg-white caption-top">
       <caption class="ms-5 text-white h2">購物車</caption>
       <thead>
@@ -66,13 +73,14 @@ export default {
                 alt="" style="width: 80px;">
               <div class="text-end text-xl-start ms-2">
                 <p class="h6 mt-1">{{ item.product.title }}</p>
-                <button class="btn btn-sm btn-danger mt-2" type="button">移除</button>
+                <button @click.prevent="removeCart(item.id)" class="btn btn-sm btn-danger mt-2" type="button">移除</button>
               </div>
             </div>
           </th>
           <td class="align-middle">
             <a @click.prevent="adjustmentTicket('-', item.id, item.qty, item.product.id)" :class="{ 'mouse-disabled': item.qty == 1}" class="d-inline-block px-xl-3 px-2" href="#"><i class="bi bi-dash-lg"></i></a>
             <input :value="item.qty" type="number" class="h6 text-center input-size ps-xl-3" disabled>
+            <span class="h6 text-center input-size ps-xl-3"></span>
             <a @click.prevent="adjustmentTicket('+', item.id, item.qty, item.product.id)" class="d-inline-block px-xl-3 px-2" href="#"><i class="bi bi-plus-lg"></i></a>
           </td>
           <td class="text-xl-end text-center align-middle pe-xl-5 h4">
@@ -87,6 +95,9 @@ export default {
       </tr>
     </tfoot>
     </table>
+  </div>
+  <div v-else class="d-flex justify-content-center align-items-center">
+    <h2 class="text-white py-10">目前購物車是空的</h2>
   </div>
 </template>
 <style scoped>
