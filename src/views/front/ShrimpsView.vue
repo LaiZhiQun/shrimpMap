@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import useIntoCityStore from '../../stores/intoCity'
 import { RouterLink } from 'vue-router'
 
@@ -10,10 +10,15 @@ export default {
   computed: {
     ...mapState(useIntoCityStore, ['shrimpFilter'])
   },
+  methods: {
+    ...mapActions(useIntoCityStore, ['intoCity'])
+  },
   mounted () {
+    // 將 city 從intoCity.js 帶過來，避免此頁面重新整理後找不到原本的資料
     const { city } = this.$route.query
     if (city) {
-      useIntoCityStore().intoCity(city)
+      // useIntoCityStore().intoCity(city)
+      this.intoCity(city)
     }
   }
 }

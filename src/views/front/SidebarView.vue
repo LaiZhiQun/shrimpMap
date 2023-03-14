@@ -44,8 +44,7 @@ export default {
       <li>
         <RouterLink to="#">
           <span class="icon"><i class="bi bi-search"></i></span>
-          <input class="form-control ms-4 border-0 rounded-3" type="text" placeholder="搜尋店家" aria-label="Search">
-            <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+          <input class="form-control ms-4 border-0" type="text" placeholder="搜尋店家" aria-label="Search">
         </RouterLink>
       </li>
       <li>
@@ -303,4 +302,5 @@ ul {
     left: 40%;
   }
 }
+
 </style>
