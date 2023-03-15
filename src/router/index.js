@@ -40,6 +40,17 @@ const routes = [
     ]
   },
   {
+    path: '/admin',
+    component: () => import('../views/DashboardView.vue'),
+    children: [
+      {
+        path: 'shrimps',
+        name: 'shrimps',
+        component: () => import('../views/admin/AdminShrimpsView.vue')
+      }
+    ]
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: () => import('../views/NotFound.vue')
   }

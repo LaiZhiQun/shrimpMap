@@ -1,3 +1,16 @@
+<script>
+import { mapActions, mapWritableState } from 'pinia'
+import useLoginStore from '../../stores/login'
+
+export default {
+  methods: {
+    ...mapActions(useLoginStore, ['login'])
+  },
+  computed: {
+    ...mapWritableState(useLoginStore, ['password', 'username'])
+  }
+}
+</script>
 <template>
   <section class="container">
     <div class="signin">
@@ -5,11 +18,11 @@
         <h2>後台登入</h2>
         <div class="form">
           <div class="inputBx">
-            <input type="text" required>
-            <i>帳號</i>
+            <input v-model="username" type="email" required>
+            <i>email</i>
           </div>
           <div class="inputBx">
-            <input type="password" required>
+            <input v-model="password" type="password" required>
             <i>密碼</i>
           </div>
           <div class="links">
@@ -17,7 +30,7 @@
             <a href="#">註冊帳號</a>
           </div>
           <div class="inputBx">
-            <input type="submit" value="Login">
+            <input @click.prevent="login" type="submit" value="Login">
           </div>
         </div>
       </div>
