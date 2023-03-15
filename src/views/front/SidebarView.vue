@@ -3,7 +3,6 @@ import { mapActions, mapState } from 'pinia'
 import { RouterLink } from 'vue-router'
 import useCartStore from '../../stores/cart'
 import useIntoCityStore from '../../stores/intoCity'
-import useLoginStore from '../../stores/login'
 // import useAddToCartStore from '../../stores/addToCart'
 export default {
   data () {
@@ -20,13 +19,12 @@ export default {
       this.isActive = !this.isActive
     },
     ...mapActions(useCartStore, ['getCarts']),
-    ...mapActions(useIntoCityStore, ['searchShrimp']),
-    ...mapActions(useLoginStore, ['login', 'logout'])
+    ...mapActions(useIntoCityStore, ['searchShrimp'])
   },
   computed: {
     ...mapState(useCartStore, ['cart', 'shakeState']),
-    ...mapState(useIntoCityStore, ['shrimpFilter']),
-    ...mapState(useLoginStore, ['loginStatus'])
+    ...mapState(useIntoCityStore, ['shrimpFilter'])
+    // ...mapWritableState(useIntoCityStore, ['searchQuery'])
   },
   mounted () {
     this.getCarts()
@@ -78,8 +76,8 @@ export default {
           <span class="title">登入</span>
         </RouterLink>
       </li>
-      <li v-show="loginStatus">
-        <RouterLink @click.prevent="logout" to="#">
+      <li>
+        <RouterLink to="#">
           <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
           <span class="title">登出</span>
         </RouterLink>
