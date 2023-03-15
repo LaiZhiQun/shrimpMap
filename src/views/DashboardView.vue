@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="container text-white">
     這是後台頁面
   <router-link to="/admin/shrimps">後台產品列表</router-link> |
   <!-- <router-link to="/admin/orders">後台訂單列表</router-link> | -->
@@ -30,3 +30,8 @@ export default {
   <Sidebar></Sidebar>
   </div>
 </template>
+<style>
+body {
+  background-color: #333;
+}
+</style>

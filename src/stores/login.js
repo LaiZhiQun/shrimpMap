@@ -50,6 +50,8 @@ const useLoginStore = defineStore('login', {
           router.push('/login')
           this.username = ''
           this.password = ''
+        } else {
+          this.loginStatus = true
         }
       }).catch(err => {
         console.log(err)
