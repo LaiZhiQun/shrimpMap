@@ -9,6 +9,7 @@ const useIntoCityStore = defineStore('intoCity', {
     return {
       shrimps: [],
       shrimpFilter: []
+      // searchQuery: ''
     }
   },
   actions: {
@@ -23,6 +24,18 @@ const useIntoCityStore = defineStore('intoCity', {
         })
         router.push({ path: '/shrimps', query: { city } })
       })
+    },
+    searchShrimp (search) {
+      if (search !== '') {
+        axios({
+          method: 'get',
+          url: `${VITE_APP_URL}api/${VITE_APP_PATH}/products/all`
+        }).then(res => {
+          this.shrimps = res.data.products
+          this.shrimpFilter = this.shrimps.filter(shrimp => shrimp.title.includes(search))
+          router.push({ path: '/shrimps' })
+        })
+      }
     }
   }
 })

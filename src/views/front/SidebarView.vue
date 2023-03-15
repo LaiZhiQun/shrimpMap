@@ -2,11 +2,13 @@
 import { mapActions, mapState } from 'pinia'
 import { RouterLink } from 'vue-router'
 import useCartStore from '../../stores/cart'
+import useIntoCityStore from '../../stores/intoCity'
 // import useAddToCartStore from '../../stores/addToCart'
 export default {
   data () {
     return {
-      isActive: false
+      isActive: false,
+      search: ''
     }
   },
   components: {
@@ -16,10 +18,12 @@ export default {
     toggleActive () {
       this.isActive = !this.isActive
     },
-    ...mapActions(useCartStore, ['getCarts'])
+    ...mapActions(useCartStore, ['getCarts']),
+    ...mapActions(useIntoCityStore, ['searchShrimp'])
   },
   computed: {
-    ...mapState(useCartStore, ['cart', 'shakeState'])
+    ...mapState(useCartStore, ['cart', 'shakeState']),
+    ...mapState(useIntoCityStore, ['shrimpFilter', 'searchQuery'])
   },
   mounted () {
     this.getCarts()
@@ -43,8 +47,8 @@ export default {
       </li>
       <li>
         <RouterLink to="#">
-          <span class="icon"><i class="bi bi-search"></i></span>
-          <input class="form-control ms-4 border-0" type="text" placeholder="搜尋店家" aria-label="Search">
+          <span @click.prevent="searchShrimp(search)" class="icon"><i class="bi bi-search"></i></span>
+          <input v-model="search" class="form-control ms-4 border-0" type="text" placeholder="輸入店家名稱" aria-label="Search">
         </RouterLink>
       </li>
       <li>

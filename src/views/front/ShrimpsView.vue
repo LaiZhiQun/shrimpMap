@@ -11,7 +11,7 @@ export default {
     ...mapState(useIntoCityStore, ['shrimpFilter'])
   },
   methods: {
-    ...mapActions(useIntoCityStore, ['intoCity'])
+    ...mapActions(useIntoCityStore, ['intoCity', 'searchShrimp'])
   },
   mounted () {
     // 將 city 從intoCity.js 帶過來，避免此頁面重新整理後找不到原本的資料
