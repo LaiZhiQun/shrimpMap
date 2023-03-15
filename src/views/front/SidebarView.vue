@@ -8,7 +8,7 @@ export default {
   data () {
     return {
       isActive: false,
-      search: ''
+      searchQuery: ''
     }
   },
   components: {
@@ -23,7 +23,8 @@ export default {
   },
   computed: {
     ...mapState(useCartStore, ['cart', 'shakeState']),
-    ...mapState(useIntoCityStore, ['shrimpFilter', 'searchQuery'])
+    ...mapState(useIntoCityStore, ['shrimpFilter'])
+    // ...mapWritableState(useIntoCityStore, ['searchQuery'])
   },
   mounted () {
     this.getCarts()
@@ -47,8 +48,8 @@ export default {
       </li>
       <li>
         <RouterLink to="#">
-          <span @click.prevent="searchShrimp(search)" class="icon"><i class="bi bi-search"></i></span>
-          <input v-model="search" class="form-control ms-4 border-0" type="text" placeholder="輸入店家名稱" aria-label="Search">
+          <span @click.prevent="searchShrimp(searchQuery)" class="icon"><i class="bi bi-search"></i></span>
+          <input v-model="searchQuery" class="form-control ms-4 border-0" type="text" placeholder="輸入店家名稱" aria-label="Search">
         </RouterLink>
       </li>
       <li>
