@@ -38,6 +38,10 @@ const routes = [
         component: () => import('../views/front/FormView.vue')
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFound.vue')
   }
 ]
 
