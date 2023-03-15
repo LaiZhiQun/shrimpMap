@@ -19,6 +19,9 @@ export default {
     if (city) {
       // useIntoCityStore().intoCity(city)
       this.intoCity(city)
+      // 搜尋功能，避免重新整理找不到搜尋的關鍵字
+    } else {
+      this.searchShrimp(this.$route.query.searchQuery)
     }
   }
 }
