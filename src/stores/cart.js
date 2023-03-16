@@ -82,6 +82,8 @@ const useCartStore = defineStore('cart', {
           this.shakeState = false
         }, 1000)
         this.shakeState = true
+      }).catch(err => {
+        console.log(err)
       })
     },
     // 單一產品頁面的數量調整
