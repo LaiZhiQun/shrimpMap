@@ -3,8 +3,14 @@
 import { mapActions, mapState } from 'pinia'
 import CartToForm from '../../components/CartToForm.vue'
 import useCartStore from '../../stores/cart'
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
+  data () {
+    return {
+      coupon_code: ''
+    }
+  },
   components: {
     CartToForm
   },
@@ -12,7 +18,20 @@ export default {
     ...mapState(useCartStore, ['cart'])
   },
   methods: {
-    ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum'])
+    ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum']),
+    addCouponCode () {
+      const coupon = {
+        code: this.coupon_code
+      }
+      this.$http({
+        method: 'post',
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/coupon`,
+        data: { data: coupon }
+      }).then(res => {
+        alert('加入優惠券')
+        this.getCarts()
+      })
+    }
   },
   mounted () {
     this.getCarts()
@@ -50,21 +69,39 @@ export default {
             <a @click.prevent="adjustmentTicket('+', item.id, item.qty, item.product.id)" class="d-inline-block px-xl-3 px-2" href="#"><i class="bi bi-plus-lg"></i></a>
           </td>
           <td class="text-xl-end text-center align-middle pe-xl-5 h4">
-            ${{ item.final_total }}
+            ${{ $filters.currency(item.final_total) }}
+            <div v-if="item.coupon" class="text-end h6 mt-2 text-success">套用優惠券</div>
           </td>
         </tr>
       </tbody>
       <tfoot>
       <tr>
         <td colspan="2" class="text-end h5">總計</td>
-        <td class="text-xl-end text-center px-xl-5 h5">$ {{ cart.total }}</td>
+        <td class="text-xl-end text-center px-xl-5 h5">$ {{ $filters.currency(cart.total) }}</td>
       </tr>
-      <tr>
-        <td colspan="2" class="text-end h5">折價後</td>
-        <td class="text-xl-end text-center px-xl-5 h5">$ {{ cart.total }}</td>
+      <tr v-if="cart.final_total !== cart.total">
+        <td colspan="2" class="text-end h5 text-success">折價後</td>
+        <td class="text-xl-end text-center px-xl-5 h5">$ {{ $filters.currency(cart.final_total) }}</td>
       </tr>
     </tfoot>
     </table>
+    <div class="input-group mb-3 input-group-sm col-xl-6 col-12 ps-xl-0 ps-5 m-auto">
+        <input
+          type="text"
+          class="form-control"
+          v-model="coupon_code"
+          placeholder="請輸入優惠碼"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary text-white"
+            type="button"
+            @click="addCouponCode"
+          >
+            套用優惠碼
+          </button>
+        </div>
+      </div>
     <CartToForm></CartToForm>
   </div>
   <div v-else class="d-flex justify-content-center align-items-center">
