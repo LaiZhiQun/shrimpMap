@@ -1,3 +1,4 @@
+
 <template>
   <footer>
     <div class="waves">
@@ -7,19 +8,8 @@
       <div class="wave" id="wave4"></div>
     </div>
     <ul class="social_icon">
-      <!-- <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-      <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
-      <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-      <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li> -->
       <li><p>本網站僅為個人學習練習之用，所使用之所有圖片、文字、影音、任何商標、標誌、產品名稱等，均來自於網路上公開資源，均屬於其各自所有者的財產，如有不當使用，請來信告知後立即移除。</p></li>
     </ul>
-    <!-- <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Team</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul> -->
     <p>@2023 Vue side project | All Rights Reserved</p>
   </footer>
 </template>
@@ -105,7 +95,7 @@ footer .wave {
   left: 0;
   width: 100%;
   height: 100px;
-  background: url('../../../public/wave.png');
+  background: url('../../assets/wave.png');
   background-size: 1000px 100px; /* 對應(1000px) */
 }
 
