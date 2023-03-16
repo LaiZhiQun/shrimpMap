@@ -20,6 +20,8 @@ import AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from './assets/zh_TW.json'
 
+import { date, currency } from './methods/filters'
+
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
 })
@@ -39,4 +41,10 @@ app.use(VueAxios, axios)
 app.component('VForm', Form)
 app.component('VField', Field)
 app.component('ErrorMessage', ErrorMessage)
+
+// 全域註冊 $filters
+app.config.globalProperties.$filters = {
+  date,
+  currency
+}
 app.mount('#app')

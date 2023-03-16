@@ -59,6 +59,10 @@ export default {
         <td colspan="2" class="text-end h5">總計</td>
         <td class="text-xl-end text-center px-xl-5 h5">$ {{ cart.total }}</td>
       </tr>
+      <tr>
+        <td colspan="2" class="text-end h5">折價後</td>
+        <td class="text-xl-end text-center px-xl-5 h5">$ {{ cart.total }}</td>
+      </tr>
     </tfoot>
     </table>
     <CartToForm></CartToForm>
