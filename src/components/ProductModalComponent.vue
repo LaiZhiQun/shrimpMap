@@ -21,6 +21,12 @@
                 <!-- 顯示放入 tempProduct.imageUrl 的圖片 -->
                 <img class="img-fluid" :src="tempProduct.imageUrl">
               </div>
+              <div>
+                <form action="/api/thisismycourse2/admin/upload" enctype="multipart/form-data"  method="post">
+                  <input @change="handleUpload($event)" class="mx-5" type="file" name="file-to-upload">
+                </form>
+                <!-- <button @click="imagePut(tempProduct)" class="mx-5 mt-3" type="button">上傳</button> -->
+              </div>
               <!-- 新增的圖片欄位 -->
 
             </div>
@@ -107,7 +113,7 @@
 
 <script>
 import modalMixin from '../mixins/modalMixin'
-// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   props: ['product', 'isNew'],
   data () {
@@ -115,7 +121,8 @@ export default {
       tempProduct: {
         imagesUrl: [],
         business_data: {}
-      }
+      },
+      newImage: ''
     }
   },
   watch: {
@@ -134,6 +141,43 @@ export default {
       // 判斷陣列最後一個值是否為空字串
       return this.tempProduct.imagesUrl.slice(-1)[0] === ''
     }
+  },
+  methods: {
+    handleUpload (event) {
+      const file = event.target.files[0]
+      const formData = new FormData()
+      formData.append('file-to-upload', file)
+      this.$http({
+        method: 'post',
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/admin/upload`,
+        data: formData
+      }).then(res => {
+        console.log(res.data.imageUrl)
+        this.newImage = res.data.imageUrl
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+    // 上傳圖片
+    // imagePut (tempProduct) {
+    //   const data = {
+    //     title: tempProduct.title,
+    //     category: tempProduct.category,
+    //     unit: tempProduct.unit,
+    //     origin_price: tempProduct.origin_price,
+    //     price: tempProduct.price,
+    //     imageUrl: this.newImage
+    //   }
+    //   this.$http({
+    //     method: 'put',
+    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/admin/product/${tempProduct.id}`,
+    //     data: { data }
+    //   }).then(res => {
+    //     alert('圖片更改成功')
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // }
   }
 }
 </script>
