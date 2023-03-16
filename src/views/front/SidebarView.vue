@@ -38,10 +38,10 @@ export default {
   <div class="navigation" :class="{ active: isActive }">
     <ul>
       <li>
-        <a href="/">
+        <RouterLink to="/">
           <span class="icon h3"><i class="fa-solid fa-shrimp"></i></span>
           <span class="title">Shrimping Map</span>
-        </a>
+        </RouterLink>
       </li>
       <li>
         <RouterLink to="/">
