@@ -44,9 +44,14 @@ const routes = [
     component: () => import('../views/DashboardView.vue'),
     children: [
       {
-        path: 'shrimps',
-        name: 'shrimps',
+        path: 'adminShrimps',
+        name: 'adminShrimps',
         component: () => import('../views/admin/AdminShrimpsView.vue')
+      },
+      {
+        path: 'adminOrders',
+        name: 'adminOrders',
+        component: () => import('../views/admin/AdminOrdersView.vue')
       }
     ]
   },
