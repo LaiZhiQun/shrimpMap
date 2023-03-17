@@ -1,1 +1,0 @@
-import{_ as t,o as s,c,b as e}from"./index-7c11930c.js";const o={},n={class:"container text-white d-flex flex-column align-items-center justify-content-center"},_=e("h1",{class:"mt-10"},"404",-1),a=e("p",{class:"mt-10"},"找不到頁面，請輸入正確網址",-1),r=[_,a];function i(d,l){return s(),c("div",n,r)}const m=t(o,[["render",i]]);export{m as default};
