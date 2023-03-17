@@ -72,7 +72,7 @@ const useCartStore = defineStore('cart', {
       // }
       axios({
         method: 'post',
-        url: `${VITE_APP_URL}v2/api/${VITE_APP_PATH}/cart`,
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`,
         data: { data }
       }).then(res => {
         alert(res.data.message)
