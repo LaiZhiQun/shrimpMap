@@ -95,7 +95,7 @@ footer .wave {
   left: 0;
   width: 100%;
   height: 100px;
-  background: url('../../assets/wave.png');
+  background: url('https://storage.googleapis.com/vue-course-api.appspot.com/brad5566/1678991768040.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=H6CZXBoAbBlUXI6Po2a1kgG%2FA2%2FJdS1FI%2F4wTEsbSTLLw%2Fyh6SBFVdT05KebHtROM8vqpFJ3i%2FrXjCD11Qp3Wa%2F34OQA66Hol%2BIKyfqMTBuLypTP9Z6LPnw9kf4h5QA8AGY9liEWdyxXLlyleHrZjL2shvHLt3f6h%2BqCZ7tST4UKxzJU9NHF6aTzemtDshrniJe5WPtvEDKc27gdCEoT2ReTOFx4g1MzVQxsuPx7u9VN3UFxiXPO5Pb707Q80ff4nrPIpUeMxBV3cs4z6yGQFFj%2Bda6RDh%2Fm4vOLihPK5IbsLmM3s89dZ8Q7LodHicoqlMqOJ5VLMOeGp6Jcc1oBHQ%3D%3D');
   background-size: 1000px 100px; /* 對應(1000px) */
 }
 
