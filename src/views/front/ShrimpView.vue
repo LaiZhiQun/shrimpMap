@@ -22,6 +22,7 @@ export default {
         this.shrimp = res.data.product
         this.business_data = res.data.product.business_data
         this.isLoading = false
+        console.log(this.shrimp)
       })
     },
     getBusinessHour (day) {
@@ -101,7 +102,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="m-5">
+        <div class="m-xl-5 m-1">
           <span class="d-inline-block pe-3">數量</span>
           <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
           <input type="number" v-model="ticketNum" class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>
