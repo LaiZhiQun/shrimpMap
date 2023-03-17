@@ -11,11 +11,13 @@ export default {
           address: ''
         },
         message: ''
-      }
+      },
+      isLoading: false
     }
   },
   methods: {
     createOrder () {
+      this.isLoading = true
       const order = this.form
       this.$http({
         method: 'post',
@@ -25,6 +27,7 @@ export default {
         alert(response.data.message)
         this.$refs.form.resetForm()
         this.form.message = ''
+        this.isLoading = false
         this.$router.push('/')
       })
     }
@@ -32,6 +35,7 @@ export default {
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="my-5 row justify-content-center text-white">
     <VForm ref="form" class="col-md-6 col-7" v-slot="{ errors }" @submit="createOrder">
       <div class="mb-3">

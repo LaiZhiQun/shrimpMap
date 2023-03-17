@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'pinia'
+import { mapActions, mapState, mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     getShrimp () {
+      this.isLoading = true
       const { id } = this.$route.params
       this.$http({
         method: 'get',
@@ -20,6 +21,7 @@ export default {
       }).then((res) => {
         this.shrimp = res.data.product
         this.business_data = res.data.product.business_data
+        this.isLoading = false
       })
     },
     getBusinessHour (day) {
@@ -29,7 +31,8 @@ export default {
     ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets'])
   },
   computed: {
-    ...mapState(useCartStore, ['ticketNum'])
+    ...mapState(useCartStore, ['ticketNum', 'isLoading']),
+    ...mapWritableState(useCartStore, ['isLoading'])
   },
   mounted () {
     this.getShrimp()
@@ -37,6 +40,7 @@ export default {
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container mt-8">
     <div class="row">
       <div class="col-xl-6 text-white">

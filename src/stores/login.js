@@ -9,11 +9,13 @@ const useLoginStore = defineStore('login', {
     return {
       username: '',
       password: '',
-      loginStatus: false
+      loginStatus: false,
+      isLoading: false
     }
   },
   actions: {
     login () {
+      this.isLoading = true
       axios({
         method: 'post',
         url: `${VITE_APP_URL}admin/signin`,
@@ -26,6 +28,7 @@ const useLoginStore = defineStore('login', {
         document.cookie = `myToken=${token};expires=${new Date(expired)}; path=/`
         alert(res.data.message)
         this.loginStatus = true
+        this.isLoading = false
         router.push('/admin/adminShrimps')
       }).catch(err => {
         alert(err.response.data.message)
@@ -59,5 +62,4 @@ const useLoginStore = defineStore('login', {
     }
   }
 })
-
 export default useLoginStore

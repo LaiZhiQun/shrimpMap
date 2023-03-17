@@ -75,6 +75,11 @@
                   <input id="price" v-model="tempProduct.phone" type="text" min="0" class="form-control"
                     placeholder="請輸入售價">
                 </div>
+                <!-- <div class="mb-3 col-md-6">
+                  <label for="cast" class="form-label text-dark">消費方式</label>
+                  <input id="cast" v-model="tempProduct.shrimp_price" type="text" min="0" class="form-control"
+                    placeholder="池種 售價">
+                </div> -->
               </div>
               <hr>
 

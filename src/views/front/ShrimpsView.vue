@@ -8,7 +8,7 @@ export default {
     RouterLink
   },
   computed: {
-    ...mapState(useIntoCityStore, ['shrimpFilter'])
+    ...mapState(useIntoCityStore, ['shrimpFilter', 'isLoading'])
   },
   methods: {
     ...mapActions(useIntoCityStore, ['intoCity', 'searchShrimp'])
@@ -27,6 +27,7 @@ export default {
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container">
     <div v-for="shrimp in shrimpFilter" :key="shrimp.id" class="custom-card">
       <div class="box">
@@ -222,7 +223,7 @@ a .wave:before {
   left: 0;
   width: 100%;
   height: 22px;
-  background: url(wave.png);
+  background: url('https://storage.googleapis.com/vue-course-api.appspot.com/brad5566/1679050926969.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=L%2Btak6USfUFy5J24v3BFghHDCSniFlGCoAB4NT2ieZQSjwJ1vfKhx1xF7MO6Wq%2BL%2B1OwupCT69ezdEkiJ7Gpzw%2Bt2azvzKoImRd%2FqAGoahAUyyruv4TrU0CP99dIP43uf3qAXOdPveBUzmhHlIPNVwmeTTDbcqfP0zaW9AIbhnZ%2B7Ywk5WQLe8W6CK%2B6PpBZm2eA336aLMzc%2BGKS%2BZ8GudX4IgdhY2btI70TbNrg%2Buy0RrEAZs8DOKwq2oTVbMuFz2JnYWNBzr6eA8lX1XPYNvNP7GpVk6McTVTBWClxghIFkO7aw5xB9rmOXXC2np6HoPZauaJFNWNzNqYlsGDTtg%3D%3D');
   animation: animate 0.5s linear infinite;
 }
 
