@@ -59,7 +59,7 @@ const useCartStore = defineStore('cart', {
     },
     // 在 shrimpView.vue 使用的，將產品加入購物車功能
     addToCart (id) {
-      this.isLoading = true
+      // this.isLoading = true
       const data = {
         product_id: id,
         qty: this.ticketNum
@@ -81,7 +81,7 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`,
         data: { data }
       }).then(res => {
-        this.isLoading = false
+        // this.isLoading = false
         alert(res.data.message)
         this.getCarts() // 重新渲染購物車內產品的數量，使 sidebar 的數字即時更新
         this.ticketNum = 1

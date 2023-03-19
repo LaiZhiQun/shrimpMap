@@ -35,7 +35,7 @@ export default {
           <h2>{{ shrimp.category }}</h2>
           <h3>{{ shrimp.title }}</h3>
           <p>地址: {{ shrimp.content }}</p>
-          <p>電話: {{ shrimp.phone }}</p>
+          <p>電話: 0{{ shrimp.phone }}</p>
           <p>種類: {{ shrimp.description }}</p>
           <div>
             <RouterLink :to="`/shrimp/${shrimp.id}`">

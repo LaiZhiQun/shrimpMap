@@ -8,6 +8,7 @@ export default {
     return {
       shrimp: {},
       business_data: {},
+      shrimp_type: {},
       days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
     }
   },
@@ -21,8 +22,9 @@ export default {
       }).then((res) => {
         this.shrimp = res.data.product
         this.business_data = res.data.product.business_data
-        this.isLoading = false
+        this.shrimp_type = res.data.product.shrimp_type
         console.log(this.shrimp)
+        this.isLoading = false
       })
     },
     getBusinessHour (day) {
@@ -51,7 +53,7 @@ export default {
             alt="">
         </div>
         <div class="m-5">
-          <h4>其他資訊</h4>
+          <h4>其他資訊 <span class="text-danger h6">( 實際資訊以店家為主 )</span></h4>
           <div class="row mt-3">
             <div class="col-6">
               <h5>營業時間：</h5>
@@ -62,9 +64,13 @@ export default {
             </div>
             <div class="col-6">
               <h5>消費方式：</h5>
-              <div v-for="shrimpType in shrimp.shrimp_price" :key="shrimpType">
+              <!-- <div v-for="shrimpType in shrimp.shrimp_price" :key="shrimpType">
                 <p>{{ shrimpType }}{{ shrimp.unit }}</p>
-              </div>
+              </div> -->
+              <div v-if="shrimp_type.male">{{ shrimp_type.male }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.female">{{ shrimp_type.female }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.mix">{{ shrimp_type.mix }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.dragon">{{ shrimp_type.dragon }}{{ shrimp.unit }}</div>
             </div>
           </div>
         </div>
@@ -74,7 +80,7 @@ export default {
         <div class="m-5">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
-          <p>{{ shrimp.phone }}</p>
+          <p>0{{ shrimp.phone }}</p>
         </div>
         <hr class="mx-5 opacity-25">
         <div class="m-5">
