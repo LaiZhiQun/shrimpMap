@@ -1,4 +1,7 @@
 <script>
+import { mapActions } from 'pinia'
+import useCartStore from '../../stores/cart'
+
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -27,10 +30,12 @@ export default {
         alert(response.data.message)
         this.$refs.form.resetForm()
         this.form.message = ''
+        this.getCarts()
         this.isLoading = false
         this.$router.push('/')
       })
-    }
+    },
+    ...mapActions(useCartStore, ['getCarts'])
   }
 }
 </script>
