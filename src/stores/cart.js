@@ -25,27 +25,58 @@ const useCartStore = defineStore('cart', {
     },
     // 購物車頁面的數量調整
     adjustmentTicket (state, cartId, qty, productId) {
-      const data = {
-        product_id: productId,
-        qty
-      }
-      if (state === '+') {
-        data.qty++
-        this.updateCartNum(data, cartId)
-      } else if (state === '-') {
-        data.qty--
-        this.updateCartNum(data, cartId)
-      }
-    },
-    updateCartNum (data, cartId) {
-      axios({
-        method: 'put',
-        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
-        data: { data }
-      }).then(res => {
-        this.getCarts()
+      this.cart.carts.forEach(item => {
+        if (item.id === cartId) {
+          if (state === '+') {
+            item.qty++
+          } else if (state === '-') {
+            item.qty--
+          }
+        }
       })
     },
+    updateCartQty () {
+      Promise.all(
+        this.cart.carts.map(item => {
+          const data = {
+            product_id: item.product.id,
+            qty: item.qty
+          }
+          return axios({
+            method: 'put',
+            url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${item.id}`,
+            data: { data }
+          }).then(res => {
+            this.getCarts()
+          }).catch(err => {
+            console.log(err)
+            this.getCarts()
+          })
+        })
+      )
+    },
+    // adjustmentTicket (state, cartId, qty, productId) {
+    //   const data = {
+    //     product_id: productId,
+    //     qty
+    //   }
+    //   if (state === '+') {
+    //     data.qty++
+    //     this.updateCartNum(data, cartId)
+    //   } else if (state === '-') {
+    //     data.qty--
+    //     this.updateCartNum(data, cartId)
+    //   }
+    // },
+    // updateCartNum (data, cartId) {
+    //   axios({
+    //     method: 'put',
+    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
+    //     data: { data }
+    //   }).then(res => {
+    //     this.getCarts()
+    //   })
+    // },
     removeCart (cartId) {
       this.isLoading = true
       axios({
@@ -64,18 +95,6 @@ const useCartStore = defineStore('cart', {
         product_id: id,
         qty: this.ticketNum
       }
-      // const itemIndex = this.cart.carts.findIndex(item => item.product.id === id)
-      // if (itemIndex === -1) {
-      //   data = {
-      //     product_id: id,
-      //     qty: this.ticketNum
-      //   }
-      // } else {
-      //   data = {
-      //     product_id: id,
-      //     qty: this.ticketNum
-      //   }
-      // }
       axios({
         method: 'post',
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`,

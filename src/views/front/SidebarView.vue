@@ -101,7 +101,7 @@ export default {
   overflow: hidden;
   box-shadow: 15px 15px 25px rgba(0, 0, 0, 0, 05);
   transition: 0.5s;
-  height: 60vh; /* custom */
+  height: 35rem; /* custom */
   top: 10vh; /* custom */
 }
 
@@ -249,7 +249,7 @@ ul {
   .navigation {
     inset: 0px;
     border-left: 10px solid #287bff;
-    height: 65vh;
+    height: 32rem;
     z-index: 3000;
     width: 50px;
     top: 5rem;
@@ -272,38 +272,68 @@ ul {
   left: 50%;
 }
 .custom-shake {
-  animation: shake 0.5s linear;
+  animation: shake 2s linear;
   animation-iteration-count: 1;
 }
 @keyframes shake {
   0% {
     left: 40%;
   }
+  5% {
+    left: 60%;
+  }
   10% {
+    left: 40%;
+  }
+  15% {
     left: 60%;
   }
   20% {
     left: 40%;
   }
+  25% {
+    left: 60%;
+  }
   30% {
+    left: 40%;
+  }
+  35% {
     left: 60%;
   }
   40% {
     left: 40%;
   }
+  45% {
+    left: 60%;
+  }
   50% {
+    left: 40%;
+  }
+  55% {
     left: 60%;
   }
   60% {
     left: 40%;
   }
+  65% {
+    left: 60%;
+  }
   70% {
+    left: 40%;
+  }
+  75% {
     left: 60%;
   }
   80% {
     left: 40%;
   }
+  85% {
+    left: 60%;
+  }
   90% {
+    left: 40%;
+  }
+  95% {
     left: 60%;
   }
   100% {

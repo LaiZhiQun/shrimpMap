@@ -19,7 +19,7 @@ export default {
     ...mapWritableState(useCartStore, ['isLoading'])
   },
   methods: {
-    ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum']),
+    ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum', 'updateCartQty']),
     addCouponCode () {
       this.isLoading = true
       const coupon = {
