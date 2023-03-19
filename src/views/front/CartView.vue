@@ -94,7 +94,7 @@ export default {
           type="text"
           class="form-control"
           v-model="coupon_code"
-          placeholder="請輸入優惠碼"
+          placeholder="請輸入優惠碼 goodprice"
         />
         <div class="input-group-append">
           <button
