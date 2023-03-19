@@ -21,6 +21,12 @@
                 <!-- 顯示放入 tempProduct.imageUrl 的圖片 -->
                 <img class="img-fluid" :src="tempProduct.imageUrl">
               </div>
+              <div>
+                <form action="/api/thisismycourse2/admin/upload" enctype="multipart/form-data" method="post">
+                  <input @change="handleUpload($event)" class="mx-5" type="file" name="file-to-upload">
+                </form>
+                <!-- <button @click="imagePut(tempProduct)" class="mx-5 mt-3" type="button">上傳</button> -->
+              </div>
               <!-- 新增的圖片欄位 -->
 
             </div>
@@ -34,8 +40,28 @@
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="category" class="form-label text-dark">縣市</label>
-                  <input id="category" v-model="tempProduct.category" type="text" class="form-control"
-                    placeholder="請輸入縣市名">
+                  <select id="category" v-model="tempProduct.category" class="form-select">
+                    <option disabled value="">請選擇縣市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="台北市">台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="台中市">台中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                  </select>
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label text-dark">單位(元/H)</label>
@@ -56,31 +82,60 @@
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="businessTime" class="form-label text-dark">營業時間</label>
-                  <input id="businessTime" v-model="tempProduct.business_data.all" type="text" min="0" class="form-control"
+                  <input id="businessTime" v-model="tempProduct.business_data.all" type="text" class="form-control"
                     placeholder="請輸入營業時間">
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="restTime" class="form-label text-dark">休息日</label>
-                  <input id="restTime" v-model="tempProduct.business_data.rest" type="text" min="0" class="form-control"
-                    placeholder="請輸入休息日">
-                </div>
+                <label for="restTime" class="form-label text-dark">休息日</label>
+                <select id="restTime" v-model="tempProduct.business_data.rest" class="form-select">
+                  <option disabled value="">請選擇休息日</option>
+                  <option value="星期一">星期一</option>
+                  <option value="星期二">星期二</option>
+                  <option value="星期三">星期三</option>
+                  <option value="星期四">星期四</option>
+                  <option value="星期五">星期五</option>
+                  <option value="星期六">星期六</option>
+                  <option value="星期日">星期日</option>
+                </select>
+              </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label text-dark">店家電話</label>
-                  <input id="price" v-model="tempProduct.phone" type="text" min="0" class="form-control"
-                    placeholder="請輸入售價">
+                  <input id="price" v-model="tempProduct.phone" type="number" min="0" class="form-control"
+                    placeholder="請輸入電話">
                 </div>
-              </div>
-              <hr>
-
-              <div class="mb-3">
-                <label for="description" class="form-label text-dark">蝦池種類</label>
-                <input id="description" v-model="tempProduct.description" type="text" class="form-control"
-                  placeholder="請輸入釣池種類">
               </div>
               <div class="mb-3">
                 <label for="content" class="form-label text-dark">地址</label>
                 <input id="description" v-model="tempProduct.content" type="text" class="form-control"
-                  placeholder="請輸入店家地址">
+                placeholder="請輸入店家地址">
+              </div>
+              <hr>
+              <div class="mb-3">
+                <label for="description" class="form-label text-dark">蝦池種類描述</label>
+                <input id="description" v-model="tempProduct.description" type="text" class="form-control"
+                  placeholder="請輸入釣池種類">
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="cast1" class="form-label text-dark">蝦池1</label>
+                    <input id="cast1" v-model="tempProduct.shrimp_type.male" type="text"  class="form-control"
+                      placeholder="公蝦池 售價">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="cast2" class="form-label text-dark">蝦池2</label>
+                    <input id="cast2" v-model="tempProduct.shrimp_type.female" type="text"  class="form-control"
+                      placeholder="母蝦池 售價">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="cast3" class="form-label text-dark">蝦池3</label>
+                    <input id="cast3" v-model="tempProduct.shrimp_type.mix" type="text"  class="form-control"
+                      placeholder="綜合池 售價">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="cast4" class="form-label text-dark">蝦池4</label>
+                    <input id="cast4" v-model="tempProduct.shrimp_type.dragon" type="text"  class="form-control"
+                      placeholder="龍蝦池 售價">
+                </div>
               </div>
               <div class="mb-3">
                 <div class="form-check">
@@ -107,14 +162,15 @@
 
 <script>
 import modalMixin from '../mixins/modalMixin'
-// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   props: ['product', 'isNew'],
   data () {
     return {
       tempProduct: {
         imagesUrl: [],
-        business_data: {}
+        business_data: {},
+        shrimp_type: {}
       }
     }
   },
@@ -134,6 +190,42 @@ export default {
       // 判斷陣列最後一個值是否為空字串
       return this.tempProduct.imagesUrl.slice(-1)[0] === ''
     }
+  },
+  methods: {
+    handleUpload (event) {
+      const file = event.target.files[0]
+      const formData = new FormData()
+      formData.append('file-to-upload', file)
+      this.$http({
+        method: 'post',
+        url: `${VITE_APP_URL}api/${VITE_APP_PATH}/admin/upload`,
+        data: formData
+      }).then(res => {
+        console.log(res.data.imageUrl)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+    // 上傳圖片
+    // imagePut (tempProduct) {
+    //   const data = {
+    //     title: tempProduct.title,
+    //     category: tempProduct.category,
+    //     unit: tempProduct.unit,
+    //     origin_price: tempProduct.origin_price,
+    //     price: tempProduct.price,
+    //     imageUrl: this.newImage
+    //   }
+    //   this.$http({
+    //     method: 'put',
+    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/admin/product/${tempProduct.id}`,
+    //     data: { data }
+    //   }).then(res => {
+    //     alert('圖片更改成功')
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // }
   }
 }
 </script>

@@ -52,7 +52,8 @@ export default {
       } else if (isNew === 'new') { // 新增時，則清空 tempProduct
         this.tempProduct = {
           imagesUrl: [],
-          business_data: {}
+          business_data: {},
+          shrimp_type: {}
         }
         this.isNew = true
         this.$refs.productModal.openModal()

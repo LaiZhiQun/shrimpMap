@@ -1,6 +1,6 @@
 <script>
 // import { debounce } from 'lodash'
-import { mapActions, mapState } from 'pinia'
+import { mapActions, mapState, mapWritableState } from 'pinia'
 import CartToForm from '../../components/CartToForm.vue'
 import useCartStore from '../../stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -15,11 +15,13 @@ export default {
     CartToForm
   },
   computed: {
-    ...mapState(useCartStore, ['cart'])
+    ...mapState(useCartStore, ['cart', 'isLoading']),
+    ...mapWritableState(useCartStore, ['isLoading'])
   },
   methods: {
     ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum']),
     addCouponCode () {
+      this.isLoading = true
       const coupon = {
         code: this.coupon_code
       }
@@ -30,6 +32,7 @@ export default {
       }).then(res => {
         alert('加入優惠券')
         this.getCarts()
+        this.isLoading = false
       })
     }
   },
@@ -39,6 +42,7 @@ export default {
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <div v-if="cart.carts && cart.carts.length > 0" class="container">
     <table class="table bg-white caption-top">
       <caption class="ms-5 text-white h2">購物車</caption>
@@ -90,7 +94,7 @@ export default {
           type="text"
           class="form-control"
           v-model="coupon_code"
-          placeholder="請輸入優惠碼"
+          placeholder="請輸入優惠碼 goodprice"
         />
         <div class="input-group-append">
           <button

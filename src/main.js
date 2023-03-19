@@ -22,6 +22,9 @@ import zhTW from './assets/zh_TW.json'
 
 import { date, currency } from './methods/filters'
 
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
+
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
 })
@@ -41,7 +44,8 @@ app.use(VueAxios, axios)
 app.component('VForm', Form)
 app.component('VField', Field)
 app.component('ErrorMessage', ErrorMessage)
-
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Loading', Loading)
 // 全域註冊 $filters
 app.config.globalProperties.$filters = {
   date,

@@ -162,7 +162,7 @@ export default {
       </svg>
     </div>
     <div
-      class="col-xl-4 col-12 bg-withe text-white d-flex flex-column  align-xl-items-start align-items-end justify-content-start">
+      class="col-xl-4 col-12 bg-withe text-white d-flex flex-column align-items-end align-items-xl-start">
       <h2 class="d-block m-xl-5">選擇想查詢的地區</h2>
       <h2 class="d-block m-xl-5">{{city}}</h2>
     </div>

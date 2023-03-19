@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'pinia'
+import { mapActions, mapState, mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -8,11 +8,13 @@ export default {
     return {
       shrimp: {},
       business_data: {},
+      shrimp_type: {},
       days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
     }
   },
   methods: {
     getShrimp () {
+      this.isLoading = true
       const { id } = this.$route.params
       this.$http({
         method: 'get',
@@ -20,6 +22,9 @@ export default {
       }).then((res) => {
         this.shrimp = res.data.product
         this.business_data = res.data.product.business_data
+        this.shrimp_type = res.data.product.shrimp_type
+        console.log(this.shrimp)
+        this.isLoading = false
       })
     },
     getBusinessHour (day) {
@@ -29,7 +34,8 @@ export default {
     ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets'])
   },
   computed: {
-    ...mapState(useCartStore, ['ticketNum'])
+    ...mapState(useCartStore, ['ticketNum', 'isLoading']),
+    ...mapWritableState(useCartStore, ['isLoading'])
   },
   mounted () {
     this.getShrimp()
@@ -37,6 +43,7 @@ export default {
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container mt-8">
     <div class="row">
       <div class="col-xl-6 text-white">
@@ -46,7 +53,7 @@ export default {
             alt="">
         </div>
         <div class="m-5">
-          <h4>其他資訊</h4>
+          <h4>其他資訊 <span class="text-danger h6">( 實際資訊以店家為主 )</span></h4>
           <div class="row mt-3">
             <div class="col-6">
               <h5>營業時間：</h5>
@@ -57,9 +64,13 @@ export default {
             </div>
             <div class="col-6">
               <h5>消費方式：</h5>
-              <div v-for="shrimpType in shrimp.shrimp_price" :key="shrimpType">
+              <!-- <div v-for="shrimpType in shrimp.shrimp_price" :key="shrimpType">
                 <p>{{ shrimpType }}{{ shrimp.unit }}</p>
-              </div>
+              </div> -->
+              <div v-if="shrimp_type.male">{{ shrimp_type.male }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.female">{{ shrimp_type.female }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.mix">{{ shrimp_type.mix }}{{ shrimp.unit }}</div>
+              <div v-if="shrimp_type.dragon">{{ shrimp_type.dragon }}{{ shrimp.unit }}</div>
             </div>
           </div>
         </div>
@@ -69,7 +80,7 @@ export default {
         <div class="m-5">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
-          <p>{{ shrimp.phone }}</p>
+          <p>0{{ shrimp.phone }}</p>
         </div>
         <hr class="mx-5 opacity-25">
         <div class="m-5">
@@ -97,7 +108,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="m-5">
+        <div class="m-xl-5 m-1">
           <span class="d-inline-block pe-3">數量</span>
           <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
           <input type="number" v-model="ticketNum" class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>

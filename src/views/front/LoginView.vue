@@ -7,11 +7,12 @@ export default {
     ...mapActions(useLoginStore, ['login'])
   },
   computed: {
-    ...mapWritableState(useLoginStore, ['password', 'username'])
+    ...mapWritableState(useLoginStore, ['password', 'username', 'isLoading'])
   }
 }
 </script>
 <template>
+  <Loading :active="isLoading" :z-index="1060"></Loading>
   <section class="container">
     <div class="signin">
       <div class="content">
