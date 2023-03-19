@@ -23,7 +23,6 @@ export default {
         this.shrimp = res.data.product
         this.business_data = res.data.product.business_data
         this.shrimp_type = res.data.product.shrimp_type
-        console.log(this.shrimp)
         this.isLoading = false
       })
     },
