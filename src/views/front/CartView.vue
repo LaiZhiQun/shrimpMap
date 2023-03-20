@@ -89,9 +89,6 @@ export default {
       </tr>
     </tfoot>
     </table>
-    <div v-show="isAdjustQty" class="text-end mb-3 mb-xl-0">
-      <button @click.prevent="updateCartQty" class="btn btn-outline-primary text-white" type="button">重新確認購物車數量</button>
-    </div>
     <div class="input-group mb-3 input-group-sm col-xl-6 col-12 ps-xl-0 ps-5 m-auto">
         <input
           type="text"
@@ -108,6 +105,9 @@ export default {
             套用優惠碼
           </button>
         </div>
+      </div>
+      <div v-show="isAdjustQty" class="text-end mb-3 mb-xl-0">
+      <button @click.prevent="updateCartQty" class="btn btn-outline-primary text-white" type="button">重新確認購物車數量</button>
       </div>
       <div v-show="!isAdjustQty">
         <CartToForm></CartToForm>
@@ -129,7 +129,7 @@ export default {
 }
 @media (max-width: 576px) {
   .input-size {
-    width: 1rem;
+    width: 2rem;
   }
 }
 </style>
