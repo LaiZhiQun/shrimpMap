@@ -56,7 +56,7 @@ export default {
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="#">
+        <RouterLink to="/info">
           <span class="icon"><i class="bi bi-info-square"></i></span>
           <span class="title">賣蝦資訊</span>
         </RouterLink>
