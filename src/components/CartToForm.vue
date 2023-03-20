@@ -1,15 +1,6 @@
-<script>
-import { mapActions } from 'pinia'
-import useCartStore from '../stores/cart'
-export default {
-  methods: {
-    ...mapActions(useCartStore, ['updateCartQty'])
-  }
-}
-</script>
 <template>
   <div class="d-flex justify-content-end mt-5">
-    <RouterLink @click="updateCartQty" to="/form">
+    <RouterLink to="/form">
       <span>填寫資料</span>
       <div class="liquid"></div>
     </RouterLink>

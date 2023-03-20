@@ -9,7 +9,8 @@ const useCartStore = defineStore('cart', {
       cart: {},
       ticketNum: 1,
       shakeState: false,
-      isLoading: false
+      isLoading: false,
+      isAdjustQty: false
     }
   },
   actions: {
@@ -25,6 +26,7 @@ const useCartStore = defineStore('cart', {
     },
     // 購物車頁面的數量調整
     adjustmentTicket (state, cartId, qty, productId) {
+      this.isAdjustQty = true
       this.cart.carts.forEach(item => {
         if (item.id === cartId) {
           if (state === '+') {
@@ -36,6 +38,7 @@ const useCartStore = defineStore('cart', {
       })
     },
     updateCartQty () {
+      this.isAdjustQty = false
       Promise.all(
         this.cart.carts.map(item => {
           const data = {
