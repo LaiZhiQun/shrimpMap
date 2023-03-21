@@ -26,7 +26,7 @@ const useLoginStore = defineStore('login', {
       }).then(res => {
         const { token, expired } = res.data
         document.cookie = `myToken=${token};expires=${new Date(expired)}; path=/`
-        alert(res.data.message)
+        // alert(res.data.message)
         this.loginStatus = true
         this.isLoading = false
         router.push('/admin/adminShrimps')

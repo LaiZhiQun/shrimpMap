@@ -62,6 +62,11 @@ const routes = [
         path: 'adminCoupons',
         name: 'adminCoupons',
         component: () => import('../views/admin/AdminCoupons.vue')
+      },
+      {
+        path: 'adminSellInfo',
+        name: 'adminSellInfo',
+        component: () => import('../views/admin/AdminSellInfoView.vue')
       }
     ]
   },

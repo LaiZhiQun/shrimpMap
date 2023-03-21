@@ -1,6 +1,8 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
+// import useLoginStore from '../../stores/login'
+import SellShrimp from '../../components/SellInfoModal.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
@@ -11,6 +13,9 @@ export default {
       shrimp_type: {},
       days: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
     }
+  },
+  components: {
+    SellShrimp
   },
   methods: {
     getShrimp () {
@@ -35,6 +40,7 @@ export default {
   computed: {
     ...mapState(useCartStore, ['ticketNum', 'isLoading']),
     ...mapWritableState(useCartStore, ['isLoading'])
+    // ...mapState(useLoginStore, ['loginStatus'])
   },
   mounted () {
     this.getShrimp()
@@ -75,7 +81,9 @@ export default {
         </div>
       </div>
       <div class="col-xl-6 text-white  position-relative">
-        <a class="text-decoration-none d-block p-3 position-absolute bottom-0 end-0 text-white" href="#"><i class="bi bi-clipboard"></i> 我要賣蝦</a>
+        <!-- <div v-if="loginStatus">
+          <a class="text-decoration-none d-block p-3 position-absolute bottom-0 end-0 text-white" href="#"><i class="bi bi-clipboard"></i> 我要賣蝦</a>
+        </div> -->
         <div class="m-5">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
@@ -121,6 +129,7 @@ export default {
       </div>
     </div>
   </div>
+  <SellShrimp ref="sellModal"></SellShrimp>
 </template>
 <style scoped>
 div a i {
