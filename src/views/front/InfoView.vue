@@ -1,7 +1,7 @@
 <script>
 import PaginationComponent from '../../components/PaginationComponent.vue'
 import 'bootstrap'
-import { mapState } from 'pinia'
+import { mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
@@ -31,7 +31,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(useCartStore, ['isLoading'])
+    ...mapWritableState(useCartStore, ['isLoading'])
   },
   mounted () {
     this.getInfo()
@@ -60,7 +60,7 @@ export default {
             <div class="accordion-body">
               <p>蝦種：{{ item.description }}</p>
               <p>價格：{{ item.price }}{{ item.unit }}</p>
-              <p>聯絡方式：line {{ item.author }}</p>
+              <p>聯絡方式：{{ item.author }}</p>
               <p>備註：{{ item.tip }}</p>
               <p>等待時間：{{ item.timeWait }}分鐘</p>
             </div>
