@@ -31,6 +31,9 @@ export default {
       <li class="ms-3">
         <router-link class="h4 text-decoration-none link-primary" to="/admin/adminCoupons">優惠券</router-link>
       </li>
+      <li class="ms-3">
+        <router-link class="h4 text-decoration-none link-primary" to="/admin/adminSellInfo">賣蝦資訊</router-link>
+      </li>
     </ul>
   <!-- <router-link to="/admin/shrimps">後台店家列表</router-link> | -->
   <!-- <router-link to="/admin/orders">後台訂單列表</router-link> | -->

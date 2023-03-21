@@ -20,7 +20,7 @@ import AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from './assets/zh_TW.json'
 
-import { date, currency } from './methods/filters'
+import { date, currency, nowTime } from './methods/filters'
 
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
@@ -49,6 +49,7 @@ app.component('Loading', Loading)
 // 全域註冊 $filters
 app.config.globalProperties.$filters = {
   date,
-  currency
+  currency,
+  nowTime
 }
 app.mount('#app')
