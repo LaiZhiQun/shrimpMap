@@ -1,1 +1,0 @@
-import{_ as t,r as o,o as c,u as s,i as n,q as a}from"./index-1b081dd9.js";const r={};function _(f,d){const e=o("dev");return c(),s(e,{class:"text-white"},{default:n(()=>[a(" 賣蝦資訊 ")]),_:1})}const l=t(r,[["render",_]]);export{l as default};
