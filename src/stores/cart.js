@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
+import { createDiscreteApi } from 'naive-ui'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 // 購物車頁面功能
@@ -39,6 +40,7 @@ const useCartStore = defineStore('cart', {
     },
     updateCartQty () {
       this.isAdjustQty = false
+      const confirmQty = 'confirmQty'
       Promise.all(
         this.cart.carts.map(item => {
           const data = {
@@ -50,6 +52,7 @@ const useCartStore = defineStore('cart', {
             url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${item.id}`,
             data: { data }
           }).then(res => {
+            this.success(confirmQty)
             this.getCarts()
           }).catch(err => {
             console.log(err)
@@ -104,8 +107,10 @@ const useCartStore = defineStore('cart', {
         data: { data }
       }).then(res => {
         // this.isLoading = false
-        alert(res.data.message)
+        // alert(res.data.message)
         this.getCarts() // 重新渲染購物車內產品的數量，使 sidebar 的數字即時更新
+        const addCart = 'addCart'
+        this.success(addCart)
         this.ticketNum = 1
         setTimeout(() => {
           this.shakeState = false
@@ -121,6 +126,14 @@ const useCartStore = defineStore('cart', {
         this.ticketNum++
       } else if (state === '-' && this.ticketNum > 1) {
         this.ticketNum--
+      }
+    },
+    success (act) {
+      const { message } = createDiscreteApi(['message'])
+      if (act === 'addCart') {
+        message.success('加入購物車成功')
+      } else if (act === 'confirmQty') {
+        message.success('更改數量成功')
       }
     }
   }

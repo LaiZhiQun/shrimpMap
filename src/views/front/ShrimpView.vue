@@ -1,7 +1,6 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
-// import useLoginStore from '../../stores/login'
 import SellShrimp from '../../components/SellInfoModal.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -35,7 +34,7 @@ export default {
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
-    ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets'])
+    ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets', 'success'])
   },
   computed: {
     ...mapState(useCartStore, ['ticketNum', 'isLoading']),
