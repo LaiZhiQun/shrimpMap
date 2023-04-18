@@ -93,7 +93,7 @@ export default {
         </tr>
       </tfoot>
     </table>
-    <div class="input-group mb-3 input-group-sm col-xl-6 col-12 ps-xl-0 ps-5 m-auto">
+    <div class="input-group mb-3 input-group-sm col-xl-6 col-12 ps-xl-0 ps-5 ms-auto">
       <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼 goodprice" />
       <div class="input-group-append">
         <button class="btn btn-outline-secondary text-white" type="button" @click="addCouponCode">
