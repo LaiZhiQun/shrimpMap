@@ -24,9 +24,6 @@ export default {
     ...mapState(useIntoCityStore, ['shrimpFilter']),
     ...mapState(useLoginStore, ['loginStatus']),
     ...mapWritableState(useIntoCityStore, ['isActive'])
-  },
-  mounted () {
-    this.getCarts()
   }
 }
 </script>

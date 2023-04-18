@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { createDiscreteApi } from 'naive-ui'
+import router from '../router'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 // 購物車頁面功能
@@ -22,6 +23,11 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
       }).then(res => {
         this.cart = res.data.data
+        console.log(Array.isArray(this.cart.carts))
+        if (this.cart.carts.length === 0) {
+          alert('尚未挑選商品喔，將轉到首頁')
+          router.push('/')
+        }
         this.isLoading = false
       })
     },

@@ -102,7 +102,7 @@ export default {
       </div>
     </div>
     <div v-show="isAdjustQty" class="text-end mb-3 mb-xl-0">
-      <button @click.prevent="updateCartQty" class="btn btn-outline-primary text-white" type="button">重新確認購物車數量</button>
+      <button @click.prevent="updateCartQty" class="btn btn-outline-primary text-white" type="button">點選更新購物車數量與金額</button>
     </div>
     <div v-show="!isAdjustQty">
       <CartToForm></CartToForm>
