@@ -13,14 +13,3 @@ export default defineConfig({
     }
   }
 })
-// export default defineConfig(({ command, mode }) => {
-//   return {
-//     base: mode === 'development' ? '/' : '/shrimpMap/',
-//     plugins: [vue()],
-//     resolve: {
-//       alias: {
-//         '@': fileURLToPath(new URL('./src', import.meta.url))
-//       }
-//     }
-//   }
-// })
