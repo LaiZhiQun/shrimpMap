@@ -1,9 +1,9 @@
 <script>
-import SellInfoModal from '../../components/SellInfoModal.vue'
-import PaginationComponent from '../../components/PaginationComponent.vue'
+import SellInfoModal from '@/components/SellInfoModal.vue'
+import PaginationComponent from '@/components/PaginationComponent.vue'
 import { mapActions } from 'pinia'
-import useLoginStore from '../../stores/login'
-import delSell from '../../components/DelSell.vue'
+import useLoginStore from '@/stores/login'
+import delSell from '@/components/DelSell.vue'
 import { Modal } from 'bootstrap'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 

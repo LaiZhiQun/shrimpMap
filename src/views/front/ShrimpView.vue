@@ -1,7 +1,7 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import useCartStore from '../../stores/cart'
-import SellShrimp from '../../components/SellInfoModal.vue'
+import useCartStore from '@/stores/cart'
+import SellShrimp from '@/components/SellInfoModal.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {

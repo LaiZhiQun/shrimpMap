@@ -1,9 +1,9 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { RouterLink } from 'vue-router'
-import useCartStore from '../../stores/cart'
-import useIntoCityStore from '../../stores/intoCity'
-import useLoginStore from '../../stores/login'
+import useCartStore from '@/stores/cart'
+import useIntoCityStore from '@/stores/intoCity'
+import useLoginStore from '@/stores/login'
 
 export default {
   data () {

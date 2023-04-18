@@ -1,8 +1,8 @@
 <script>
-import PaginationComponent from '../../components/PaginationComponent.vue'
+import PaginationComponent from '@/components/PaginationComponent.vue'
 import 'bootstrap'
 import { mapWritableState } from 'pinia'
-import useCartStore from '../../stores/cart'
+import useCartStore from '@/stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {

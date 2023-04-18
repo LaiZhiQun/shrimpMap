@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapWritableState } from 'pinia'
-import useLoginStore from '../../stores/login'
+import useLoginStore from '@/stores/login'
 
 export default {
   methods: {

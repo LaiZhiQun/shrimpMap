@@ -1,7 +1,7 @@
 <script>
 import { RouterView } from 'vue-router'
-import Sidebar from '../views/front/SidebarView.vue'
-import FooterView from '../views/front/FooterView.vue'
+import Sidebar from '@/views/front/SidebarView.vue'
+import FooterView from '@/views/front/FooterView.vue'
 export default {
   components: {
     RouterView,

@@ -1,7 +1,7 @@
 <script>
 import { RouterView } from 'vue-router'
 import { mapActions } from 'pinia'
-import useLoginStore from '../stores/login'
+import useLoginStore from '@/stores/login'
 import Sidebar from './front/SidebarView.vue'
 
 export default {

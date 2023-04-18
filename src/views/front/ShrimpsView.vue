@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapState } from 'pinia'
-import useIntoCityStore from '../../stores/intoCity'
+import useIntoCityStore from '@/stores/intoCity'
 import { RouterLink } from 'vue-router'
 
 export default {

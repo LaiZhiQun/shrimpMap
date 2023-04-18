@@ -1,9 +1,9 @@
 <script>
 import { mapActions } from 'pinia'
-import useLoginStore from '../../stores/login'
-import PaginationComponent from '../../components/PaginationComponent.vue'
-import ProductModalComponent from '../../components/ProductModalComponent.vue'
-import DelComponent from '../../components/DelComponent.vue'
+import useLoginStore from '@/stores/login'
+import PaginationComponent from '@/components/PaginationComponent.vue'
+import ProductModalComponent from '@/components/ProductModalComponent.vue'
+import DelComponent from '@/components/DelComponent.vue'
 import { Modal } from 'bootstrap'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 

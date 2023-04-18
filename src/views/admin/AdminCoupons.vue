@@ -40,9 +40,9 @@
 
 <script>
 import { mapActions } from 'pinia'
-import CouponModal from '../../components/CouponModal.vue'
-import DelModal from '../../components/DelCouponsModal.vue'
-import useLoginStore from '../../stores/login'
+import CouponModal from '@/components/CouponModal.vue'
+import DelModal from '@/components/DelCouponsModal.vue'
+import useLoginStore from '@/stores/login'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {

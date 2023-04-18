@@ -1,7 +1,7 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import CartToForm from '../../components/CartToForm.vue'
-import useCartStore from '../../stores/cart'
+import CartToForm from '@/components/CartToForm.vue'
+import useCartStore from '@/stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
