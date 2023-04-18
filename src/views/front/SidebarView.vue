@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'pinia'
+import { mapActions, mapState, mapWritableState } from 'pinia'
 import { RouterLink } from 'vue-router'
 import useCartStore from '@/stores/cart'
 import useIntoCityStore from '@/stores/intoCity'
@@ -8,7 +8,6 @@ import useLoginStore from '@/stores/login'
 export default {
   data () {
     return {
-      isActive: false,
       searchQuery: ''
     }
   },
@@ -16,18 +15,15 @@ export default {
     RouterLink
   },
   methods: {
-    toggleActive () {
-      this.isActive = !this.isActive
-    },
     ...mapActions(useCartStore, ['getCarts']),
-    ...mapActions(useIntoCityStore, ['searchShrimp']),
+    ...mapActions(useIntoCityStore, ['searchShrimp', 'toggleActive']),
     ...mapActions(useLoginStore, ['logout'])
   },
   computed: {
     ...mapState(useCartStore, ['cart', 'shakeState']),
     ...mapState(useIntoCityStore, ['shrimpFilter']),
-    ...mapState(useLoginStore, ['loginStatus'])
-    // ...mapWritableState(useIntoCityStore, ['searchQuery'])
+    ...mapState(useLoginStore, ['loginStatus']),
+    ...mapWritableState(useIntoCityStore, ['isActive'])
   },
   mounted () {
     this.getCarts()
@@ -39,7 +35,7 @@ export default {
   <div class="navigation" :class="{ active: isActive }">
     <ul>
       <li>
-        <RouterLink to="/">
+        <RouterLink to="#" class="customMouse">
           <span class="icon h3"><i class="fa-solid fa-shrimp"></i></span>
           <span class="title">Shrimping Map</span>
         </RouterLink>
@@ -370,4 +366,8 @@ ul {
   100% {
     left: 40%;
   }
-}</style>
+}
+.customMouse {
+  cursor: auto;
+}
+</style>
