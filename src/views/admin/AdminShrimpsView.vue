@@ -6,6 +6,7 @@ import ProductModalComponent from '../../components/ProductModalComponent.vue'
 import DelComponent from '../../components/DelComponent.vue'
 import { Modal } from 'bootstrap'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -19,7 +20,6 @@ export default {
         }
       },
       isNew: false
-      // delProductModal: {}
     }
   },
   components: {
@@ -85,7 +85,6 @@ export default {
             data: this.tempProduct
           }
         }).then(res => {
-          // alert(res.data.message)
           alert('已新增店家')
           this.$refs.productModal.hideModal()
           this.getProductsList()
@@ -107,6 +106,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="container">
     <div class="text-end mt-4">

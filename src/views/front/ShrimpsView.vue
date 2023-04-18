@@ -26,6 +26,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container">
@@ -114,16 +115,6 @@ body {
   pointer-events: none;
 }
 
-/* .container .custom-card .box:hover {
-  transform: translateY(-50px);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
-} */
-
-/* .container .custom-card .box .content {
-  padding: 20px;
-  text-align: center;
-} */
-
 .container .custom-card .box .content h2 {
   position: absolute;
   top: 0px;
@@ -150,33 +141,8 @@ body {
   color: rgba(255, 255, 255, 0.5);
   z-index: 1;
   transition: 0.5s;
-  /* margin-top: 10px; */
 }
 
-/* .container .custom-card .box .content a {
-  position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  background-color: #000;
-  margin-top: 15px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: #fff;
-  bottom: 0;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.container .custom-card:nth-child(1) .box .content a {
-  background-color: #2196f3;
-}
-
-.container .custom-card:nth-child(2) .box .content a {
-  background-color: #e91e63;
-}
-
-.container .custom-card:nth-child(3) .box .content a {
-  background-color: #97dc47;
-} */
 a {
   position: relative;
   display: block;

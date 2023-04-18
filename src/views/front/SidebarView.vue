@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import useCartStore from '../../stores/cart'
 import useIntoCityStore from '../../stores/intoCity'
 import useLoginStore from '../../stores/login'
-// import useAddToCartStore from '../../stores/addToCart'
+
 export default {
   data () {
     return {
@@ -34,6 +34,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="navigation" :class="{ active: isActive }">
     <ul>
@@ -52,7 +53,8 @@ export default {
       <li>
         <RouterLink to="#">
           <span @click.prevent="searchShrimp(searchQuery)" class="icon"><i class="bi bi-search"></i></span>
-          <input v-model="searchQuery" class="form-control ms-4 border-0" type="text" placeholder="輸入店家名稱" aria-label="Search">
+          <input v-model="searchQuery" class="form-control ms-4 border-0" type="text" placeholder="輸入店家名稱"
+            aria-label="Search">
         </RouterLink>
       </li>
       <li>
@@ -64,9 +66,10 @@ export default {
       <li>
         <RouterLink to="/cart">
           <span class="icon">
-            <span :class="{ 'custom-shake': shakeState }" class="shake-position position-absolute badge rounded-circle bg-danger">
-            {{ Array.isArray(this.cart.carts) ? this.cart.carts.length : '0' }}
-            <span class="visually-hidden">unread messages</span>
+            <span :class="{ 'custom-shake': shakeState }"
+              class="shake-position position-absolute badge rounded-circle bg-danger">
+              {{ Array.isArray(this.cart.carts) ? this.cart.carts.length : '0' }}
+              <span class="visually-hidden">unread messages</span>
             </span>
             <i class="bi bi-cart4"></i>
           </span>
@@ -101,8 +104,10 @@ export default {
   overflow: hidden;
   box-shadow: 15px 15px 25px rgba(0, 0, 0, 0, 05);
   transition: 0.5s;
-  height: 35rem; /* custom */
-  top: 10vh; /* custom */
+  height: 35rem;
+  /* custom */
+  top: 10vh;
+  /* custom */
 }
 
 .navigation.active {
@@ -168,7 +173,6 @@ export default {
   width: 100%;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
-  /* background: #fff; */
 }
 
 .navigation ul li:hover {
@@ -245,7 +249,8 @@ ol,
 ul {
   padding-left: 0rem;
 }
-@media (max-width: 576px)  {
+
+@media (max-width: 576px) {
   .navigation {
     inset: 0px;
     border-left: 10px solid #287bff;
@@ -255,90 +260,114 @@ ul {
     top: 5rem;
     opacity: 50%;
   }
+
   .navigation.active {
     opacity: 100%;
   }
+
   .navigation ul li a .icon {
     min-width: 30px;
   }
+
   .toggle {
     right: 10px;
     width: 30px;
     height: 30px;
   }
 }
-.shake-position{
+
+.shake-position {
   top: 0;
   left: 50%;
 }
+
 .custom-shake {
   animation: shake 1s linear;
   animation-iteration-count: 1;
 }
+
 @keyframes shake {
   0% {
     left: 40%;
   }
+
   5% {
     left: 60%;
   }
+
   10% {
     left: 40%;
   }
+
   15% {
     left: 60%;
   }
+
   20% {
     left: 40%;
   }
+
   25% {
     left: 60%;
   }
+
   30% {
     left: 40%;
   }
+
   35% {
     left: 60%;
   }
+
   40% {
     left: 40%;
   }
+
   45% {
     left: 60%;
   }
+
   50% {
     left: 40%;
   }
+
   55% {
     left: 60%;
   }
+
   60% {
     left: 40%;
   }
+
   65% {
     left: 60%;
   }
+
   70% {
     left: 40%;
   }
+
   75% {
     left: 60%;
   }
+
   80% {
     left: 40%;
   }
+
   85% {
     left: 60%;
   }
+
   90% {
     left: 40%;
   }
+
   95% {
     left: 60%;
   }
+
   100% {
     left: 40%;
   }
-}
-
-</style>
+}</style>

@@ -1,5 +1,6 @@
 <template>
-  <div id="delSellModal" ref="delSellModal" class="modal fade" tabindex="-1" aria-labelledby="delSellModal" aria-hidden="true">
+  <div id="delSellModal" ref="delSellModal" class="modal fade" tabindex="-1" aria-labelledby="delSellModal"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
@@ -27,6 +28,7 @@
 
 <script>
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   props: ['tempProduct', 'getProductsList'],
   methods: {

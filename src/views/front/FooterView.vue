@@ -1,4 +1,3 @@
-
 <template>
   <footer>
     <div class="waves">
@@ -13,6 +12,7 @@
     <p>@2023 Vue side project | All Rights Reserved</p>
   </footer>
 </template>
+
 <style scoped>
 * {
   margin: 0;
@@ -42,50 +42,13 @@ footer {
   margin-top: 50vh; /* custom */
 }
 
-/* footer .social_icon, footer .menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  flex-wrap: wrap;
-} */
-
 footer .social_icon li, footer .menu li {
   list-style: none;
 }
 
-/* footer .social_icon li a {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.5s;
-} */
-
-/* footer .social_icon li a:hover {
-  transform: translateY(-10px);
-} */
-
-/* footer .menu li a {
-  font-size: 1.2rem;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.5s;
-  text-decoration: none;
-  opacity: 0.75;
-} */
-
-/* footer .menu li a:hover {
-  opacity: 1;
-} */
-
 footer p {
   color: #fff;
   text-align: start;
-  /* margin-top: 15px; */
-  /* margin-bottom: 10px; */
   font-size: 1.1rem;
 }
 

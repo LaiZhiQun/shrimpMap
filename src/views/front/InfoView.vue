@@ -4,6 +4,7 @@ import 'bootstrap'
 import { mapWritableState } from 'pinia'
 import useCartStore from '../../stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -38,6 +39,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class=" d-flex justify-content-center mt-8">

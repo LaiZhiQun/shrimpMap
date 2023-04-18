@@ -11,6 +11,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <section class="container">
@@ -59,35 +60,6 @@ section {
   flex-wrap: wrap;
   overflow: hidden;
 }
-
-/* section::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#000, #0f0, #000);
-  animation: animate 5s linear infinite;
-} */
-
-/* @keyframes animate {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  100% {
-    transform: translateY(100%);
-  }
-} */
-
-/* section span {
-  position: relative;
-  display: block;
-  width: calc(6.25vw - 2px);
-  height: calc(6.25vw - 2px);
-  background-color: #181818;
-  z-index: 2;
-  transition: 1.5s;
-} */
 
 section span:hover {
   background-color: #287bff;
@@ -193,19 +165,6 @@ section .signin .content .form .inputBx i {
   cursor: pointer;
 }
 
-/* @media (max-width:900px) {
-  section span {
-    width: calc(10vw - 2px);
-    height: calc(10vw - 2px);
-  }
-}
-
-@media (max-width:600px) {
-  section span {
-    width: calc(20vw - 2px);
-    height: calc(20vw - 2px);
-  }
-} */
 @media (max-width: 576px) {
   section {
     padding-left: 3rem;
@@ -216,6 +175,5 @@ section .signin .content .form .inputBx i {
     width: 300px;
     padding: 10px;
   }
-
 }
 </style>
