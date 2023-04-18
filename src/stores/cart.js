@@ -61,28 +61,6 @@ const useCartStore = defineStore('cart', {
         })
       )
     },
-    // adjustmentTicket (state, cartId, qty, productId) {
-    //   const data = {
-    //     product_id: productId,
-    //     qty
-    //   }
-    //   if (state === '+') {
-    //     data.qty++
-    //     this.updateCartNum(data, cartId)
-    //   } else if (state === '-') {
-    //     data.qty--
-    //     this.updateCartNum(data, cartId)
-    //   }
-    // },
-    // updateCartNum (data, cartId) {
-    //   axios({
-    //     method: 'put',
-    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
-    //     data: { data }
-    //   }).then(res => {
-    //     this.getCarts()
-    //   })
-    // },
     removeCart (cartId) {
       this.isLoading = true
       axios({
@@ -96,7 +74,6 @@ const useCartStore = defineStore('cart', {
     },
     // 在 shrimpView.vue 使用的，將產品加入購物車功能
     addToCart (id) {
-      // this.isLoading = true
       const data = {
         product_id: id,
         qty: this.ticketNum
@@ -106,8 +83,6 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`,
         data: { data }
       }).then(res => {
-        // this.isLoading = false
-        // alert(res.data.message)
         this.getCarts() // 重新渲染購物車內產品的數量，使 sidebar 的數字即時更新
         const addCart = 'addCart'
         this.success(addCart)

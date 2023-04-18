@@ -36,8 +36,8 @@ export default {
       </li>
     </ul>
   <hr>
-  <RouterView></RouterView>
-  <Sidebar></Sidebar>
+  <RouterView />
+  <Sidebar />
   </div>
 </template>
 
