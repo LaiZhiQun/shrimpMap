@@ -103,7 +103,10 @@ body {
   align-items: center;
   overflow: hidden;
 }
-
+.container .custom-card .box:hover {
+  transform: translateY(-30px);
+  box-shadow: 0 20px 70px rgba(0,0,0,0.5);
+}
 .container .custom-card .box::before {
   content: '';
   position: absolute;
@@ -122,14 +125,14 @@ body {
   right: 15px;
   /* custom */
   font-size: 8rem;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgb(135, 134, 134);
   font-size: 80px;
   /* custom */
 }
 
 .container .custom-card .box .content h3 {
   font-size: 1.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: white;
   z-index: 1;
   transition: 0.5s;
   margin-top: 5rem; /* custom */
@@ -138,7 +141,7 @@ body {
 .container .custom-card .box .content p {
   font-size: 16px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
+  color: white;
   z-index: 1;
   transition: 0.5s;
 }
