@@ -105,8 +105,8 @@ export default {
             </div>
           </div>
         </div>
-        <div class="m-xl-5 m-1">
-          <span class="d-inline-block pe-3">數量</span>
+        <div class="m-xl-5 m-1 ps-4 ps-xl-0">
+          <span class="d-block mb-2">調整數量</span>
           <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3"
             href="#"><i class="bi bi-dash-lg"></i></a>
           <input type="number" v-model="ticketNum"
