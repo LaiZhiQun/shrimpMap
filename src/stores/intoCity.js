@@ -9,7 +9,8 @@ const useIntoCityStore = defineStore('intoCity', {
       shrimps: [],
       shrimpFilter: [],
       isLoading: false,
-      isActive: false
+      isActive: false,
+      searchQuery: ''
     }
   },
   actions: {
@@ -38,6 +39,7 @@ const useIntoCityStore = defineStore('intoCity', {
           this.shrimpFilter = this.shrimps.filter(shrimp => shrimp.title.includes(searchQuery))
           this.isLoading = false
           this.isActive = false
+          this.searchQuery = ''
           router.push({ path: '/shrimps', query: { searchQuery } })
         })
       } else if (searchQuery === '') {

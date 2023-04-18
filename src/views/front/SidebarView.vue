@@ -6,11 +6,10 @@ import useIntoCityStore from '@/stores/intoCity'
 import useLoginStore from '@/stores/login'
 
 export default {
-  data () {
-    return {
-      searchQuery: ''
-    }
-  },
+  // data () {
+  //   return {
+  //   }
+  // },
   components: {
     RouterLink
   },
@@ -23,7 +22,7 @@ export default {
     ...mapState(useCartStore, ['cart', 'shakeState']),
     ...mapState(useIntoCityStore, ['shrimpFilter']),
     ...mapState(useLoginStore, ['loginStatus']),
-    ...mapWritableState(useIntoCityStore, ['isActive'])
+    ...mapWritableState(useIntoCityStore, ['isActive', 'searchQuery'])
   }
 }
 </script>
