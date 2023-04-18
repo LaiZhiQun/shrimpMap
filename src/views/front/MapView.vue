@@ -1,6 +1,6 @@
 <script>
 import { mapActions } from 'pinia'
-import useIntoCityStore from '../../stores/intoCity'
+import useIntoCityStore from '@/stores/intoCity'
 
 export default {
   data () {
@@ -15,7 +15,10 @@ export default {
     removeCity (c) {
       this.city = ''
     },
-    ...mapActions(useIntoCityStore, ['intoCity'])
+    ...mapActions(useIntoCityStore, ['intoCity', 'closeSidebar'])
+  },
+  mounted () {
+    this.closeSidebar()
   }
 }
 </script>

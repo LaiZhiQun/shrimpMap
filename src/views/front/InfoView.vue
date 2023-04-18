@@ -1,8 +1,9 @@
 <script>
 import PaginationComponent from '@/components/PaginationComponent.vue'
 import 'bootstrap'
-import { mapWritableState } from 'pinia'
+import { mapWritableState, mapActions } from 'pinia'
 import useCartStore from '@/stores/cart'
+import useIntoCityStore from '@/stores/intoCity'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
@@ -29,13 +30,15 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-    }
+    },
+    ...mapActions(useIntoCityStore, ['closeSidebar'])
   },
   computed: {
     ...mapWritableState(useCartStore, ['isLoading'])
   },
   mounted () {
     this.getInfo()
+    this.closeSidebar()
   }
 }
 </script>

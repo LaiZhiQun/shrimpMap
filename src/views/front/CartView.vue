@@ -2,6 +2,7 @@
 import { mapActions, mapState, mapWritableState } from 'pinia'
 import CartToForm from '@/components/CartToForm.vue'
 import useCartStore from '@/stores/cart'
+import useIntoCityStore from '@/stores/intoCity'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
@@ -19,6 +20,7 @@ export default {
   },
   methods: {
     ...mapActions(useCartStore, ['adjustmentTicket', 'getCarts', 'removeCart', 'updateCartNum', 'updateCartQty', 'updateCartQty']),
+    ...mapActions(useIntoCityStore, ['closeSidebar']),
     addCouponCode () {
       this.isLoading = true
       const coupon = {
@@ -37,6 +39,7 @@ export default {
   },
   mounted () {
     this.getCarts()
+    this.closeSidebar()
   }
 }
 </script>

@@ -1,13 +1,18 @@
 <script>
 import { mapActions, mapWritableState } from 'pinia'
 import useLoginStore from '@/stores/login'
+import useIntoCityStore from '@/stores/intoCity'
 
 export default {
   methods: {
-    ...mapActions(useLoginStore, ['login'])
+    ...mapActions(useLoginStore, ['login']),
+    ...mapActions(useIntoCityStore, ['closeSidebar'])
   },
   computed: {
     ...mapWritableState(useLoginStore, ['password', 'username', 'isLoading'])
+  },
+  mounted () {
+    this.closeSidebar()
   }
 }
 </script>
