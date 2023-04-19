@@ -11,7 +11,12 @@ export default {
     ...mapState(moreShrimpsStore, ['randomShrimps'])
   },
   methods: {
-    ...mapActions(moreShrimpsStore, ['getRandomShrimps'])
+    ...mapActions(moreShrimpsStore, ['getRandomShrimps']),
+    refreshPage () {
+      //  .catch(() => {}) 是為了處理路由重複觸發的錯誤，這是因為當路由已經處於目標狀態時，Vue Router 會拋出一個錯誤，但是這個錯誤不會影響功能的正常運行。
+      this.$router.push(this.$route.path).catch(() => {})
+      location.reload()
+    }
   },
   mounted () {
     this.getRandomShrimps()
@@ -33,7 +38,7 @@ export default {
           <p>電話: 0{{ shrimp.phone }}</p>
           <p>種類: {{ shrimp.description }}</p>
           <div>
-            <RouterLink :to="`/shrimp/${shrimp.id}`">
+            <RouterLink :to="{ name: 'shrimp', params: { id: shrimp.id } }" @click.passive="refreshPage(shrimp.id)">
               <span>店家資訊</span>
               <div class="wave"></div>
             </RouterLink>

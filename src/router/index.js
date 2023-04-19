@@ -41,6 +41,11 @@ const routes = [
         path: 'info',
         name: 'info',
         component: () => import('../views/front/InfoView.vue')
+      },
+      {
+        path: 'orderSuccess',
+        name: 'orderSuccess',
+        component: () => import('../views/front/OrderSuccessView.vue')
       }
     ]
   },
