@@ -15,7 +15,7 @@ export default {
     CartToForm
   },
   computed: {
-    ...mapState(useCartStore, ['cart', 'isLoading', 'isAdjustQty']),
+    ...mapState(useCartStore, ['cart', 'isLoading', 'isAdjustQty', 'countdown']),
     ...mapWritableState(useCartStore, ['isLoading'])
   },
   methods: {
@@ -112,7 +112,7 @@ export default {
     </div>
   </div>
   <div v-else class="d-flex justify-content-center align-items-center">
-    <h2 class="text-white py-10">目前購物車是空的</h2>
+    <h2 class="text-white py-10">目前購物車是空的，將在 {{ countdown }} 秒後導回首頁</h2>
   </div>
 </template>
 

@@ -12,7 +12,8 @@ const useCartStore = defineStore('cart', {
       ticketNum: 1,
       shakeState: false,
       isLoading: false,
-      isAdjustQty: false
+      isAdjustQty: false,
+      countdown: 3
     }
   },
   actions: {
@@ -24,8 +25,13 @@ const useCartStore = defineStore('cart', {
       }).then(res => {
         this.cart = res.data.data
         if (this.cart.carts.length === 0) {
-          alert('目前購物車是空的，即將轉到首頁')
-          router.push('/')
+          const interval = setInterval(() => {
+            this.countdown--
+            if (this.countdown === 0) {
+              clearInterval(interval)
+              router.push('/')
+            }
+          }, 1000)
         }
         this.isLoading = false
       })
