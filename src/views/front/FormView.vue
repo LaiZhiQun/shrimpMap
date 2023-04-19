@@ -43,10 +43,10 @@ export default {
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="my-5 row justify-content-center text-white">
-    <VForm ref="form" class="col-md-6 col-7" v-slot="{ errors }" @submit="createOrder">
-      <div class="text-end mt-10 mb-5">
+    <div class="text-center mt-10 mb-5">
       <span class="text-primary">1. 選購商品 > </span><span class="text-primary">2. 填寫資料 > </span><span class="text-secondary">3. 訂單完成</span>
       </div>
+    <VForm ref="form" class="col-md-6 col-7" v-slot="{ errors }" @submit="createOrder">
       <p class="text-danger">*為必填選項</p>
       <div class="mb-3">
         <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
