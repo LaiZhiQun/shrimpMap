@@ -47,6 +47,9 @@ export default {
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div v-if="cart.carts && cart.carts.length > 0" class="container">
+    <div class="text-end mt-10">
+      <span class="text-primary">1. 選購商品 > </span><span class="text-secondary">2. 填寫資料 > </span><span class="text-secondary">3. 訂單完成</span>
+    </div>
     <table class="table bg-white caption-top">
       <caption class="ms-5 text-white h2">購物車</caption>
       <thead>
