@@ -8,7 +8,9 @@ const useIntoCityStore = defineStore('intoCity', {
     return {
       shrimps: [],
       shrimpFilter: [],
-      isLoading: false
+      isLoading: false,
+      isActive: false,
+      searchQuery: ''
     }
   },
   actions: {
@@ -36,9 +38,20 @@ const useIntoCityStore = defineStore('intoCity', {
           this.shrimps = res.data.products
           this.shrimpFilter = this.shrimps.filter(shrimp => shrimp.title.includes(searchQuery))
           this.isLoading = false
+          this.isActive = false
+          this.searchQuery = ''
           router.push({ path: '/shrimps', query: { searchQuery } })
         })
+      } else if (searchQuery === '') {
+        this.isActive = true
+        this.isLoading = false
       }
+    },
+    toggleActive () {
+      this.isActive = !this.isActive
+    },
+    closeSidebar () {
+      this.isActive = false
     }
   }
 })

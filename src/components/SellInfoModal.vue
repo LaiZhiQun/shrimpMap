@@ -1,5 +1,4 @@
 <script>
-
 export default {
   props: ['sell', 'isNew'],
   data () {
@@ -15,6 +14,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="modal fade" id="sellInfoModal" tabindex="-1" role="dialog" aria-labelledby="sellModalLabel"
     aria-hidden="true" ref="sellInfoModal">
@@ -72,8 +72,8 @@ export default {
               <div class="row">
                 <div class="mb-3 col-md-6">
                   <label for="origin_price" class="form-label text-dark">售價</label>
-                  <input id="origin_price" v-model.number="tempSell.price" type="number" min="0"
-                    class="form-control" placeholder="請輸入售價">
+                  <input id="origin_price" v-model.number="tempSell.price" type="number" min="0" class="form-control"
+                    placeholder="請輸入售價">
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="businessTime" class="form-label text-dark">等待時間</label>
@@ -82,23 +82,20 @@ export default {
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label text-dark">聯絡方式</label>
-                  <input id="price" v-model="tempSell.author" type="text" class="form-control"
-                    placeholder="請輸入line">
+                  <input id="price" v-model="tempSell.author" type="text" class="form-control" placeholder="請輸入line">
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="description" class="form-label text-dark">蝦種</label>
                   <input id="description" v-model="tempSell.description" type="text" class="form-control"
-                  placeholder="公蝦、母蝦或綜合">
+                    placeholder="公蝦、母蝦或綜合">
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="content" class="form-label text-dark">備註</label>
-                  <input id="content" v-model="tempSell.content" type="text" class="form-control"
-                  placeholder="備註">
+                  <input id="content" v-model="tempSell.content" type="text" class="form-control" placeholder="備註">
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="tip" class="form-label text-dark">備註</label>
-                  <input id="tip" v-model="tempSell.tip" type="text" class="form-control"
-                  placeholder="備註">
+                  <input id="tip" v-model="tempSell.tip" type="text" class="form-control" placeholder="備註">
                 </div>
               </div>
               <hr>

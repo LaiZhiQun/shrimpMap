@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapState } from 'pinia'
-import useIntoCityStore from '@/stores/intoCity'
+import moreShrimpsStore from '@/stores/moreShrimps'
 import { RouterLink } from 'vue-router'
 
 export default {
@@ -8,29 +8,23 @@ export default {
     RouterLink
   },
   computed: {
-    ...mapState(useIntoCityStore, ['shrimpFilter', 'isLoading'])
+    ...mapState(moreShrimpsStore, ['randomShrimps'])
   },
   methods: {
-    ...mapActions(useIntoCityStore, ['intoCity', 'searchShrimp'])
+    ...mapActions(moreShrimpsStore, ['getRandomShrimps'])
   },
   mounted () {
-    // 將 city 從intoCity.js 帶過來，避免此頁面重新整理後找不到原本的資料
-    const { city } = this.$route.query
-    if (city) {
-      // useIntoCityStore().intoCity(city)
-      this.intoCity(city)
-      // 搜尋功能，避免重新整理找不到搜尋的關鍵字
-    } else {
-      this.searchShrimp(this.$route.query.searchQuery)
-    }
+    this.getRandomShrimps()
   }
 }
 </script>
 
 <template>
-  <Loading :active="isLoading" :z-index="1060"></Loading>
+  <div class="container mt-10">
+    <p class="h3 text-white">其他推薦店家</p>
+  </div>
   <div class="container">
-    <div v-for="shrimp in shrimpFilter" :key="shrimp.id" class="custom-card">
+    <div v-for="shrimp in randomShrimps" :key="shrimp.id" class="custom-card">
       <div class="box">
         <div class="content">
           <h2>{{ shrimp.category }}</h2>

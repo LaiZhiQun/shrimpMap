@@ -1,11 +1,12 @@
 <script>
-import SellInfoModal from '../../components/SellInfoModal.vue'
-import PaginationComponent from '../../components/PaginationComponent.vue'
+import SellInfoModal from '@/components/SellInfoModal.vue'
+import PaginationComponent from '@/components/PaginationComponent.vue'
 import { mapActions } from 'pinia'
-import useLoginStore from '../../stores/login'
-import delSell from '../../components/DelSell.vue'
+import useLoginStore from '@/stores/login'
+import delSell from '@/components/DelSell.vue'
 import { Modal } from 'bootstrap'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -101,6 +102,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="container">
     <div class="text-end mt-4">
@@ -152,6 +154,5 @@ export default {
   </div>
   <PaginationComponent :pages="page" @emitPages="getArticles"></PaginationComponent>
   <SellInfoModal ref="SellInfoModal" @updateSell="updateSell" :sell="tempSell" :isNew="isNew"></SellInfoModal>
-  <delSell ref="dellSell" @closeModal="closeModal" :tempProduct="tempSell"
-    :getProductsList="getArticles"></delSell>
+  <delSell ref="dellSell" @closeModal="closeModal" :tempProduct="tempSell" :getProductsList="getArticles"></delSell>
 </template>

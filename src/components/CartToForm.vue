@@ -6,6 +6,7 @@
     </RouterLink>
   </div>
 </template>
+
 <style scoped>
 a {
   position: relative;

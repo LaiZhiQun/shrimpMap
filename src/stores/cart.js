@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
+import { createDiscreteApi } from 'naive-ui'
+import router from '../router'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 // 購物車頁面功能
@@ -21,6 +23,10 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
       }).then(res => {
         this.cart = res.data.data
+        if (this.cart.carts.length === 0) {
+          alert('目前購物車是空的，即將轉到首頁')
+          router.push('/')
+        }
         this.isLoading = false
       })
     },
@@ -39,6 +45,7 @@ const useCartStore = defineStore('cart', {
     },
     updateCartQty () {
       this.isAdjustQty = false
+      const confirmQty = 'confirmQty'
       Promise.all(
         this.cart.carts.map(item => {
           const data = {
@@ -50,6 +57,7 @@ const useCartStore = defineStore('cart', {
             url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${item.id}`,
             data: { data }
           }).then(res => {
+            this.success(confirmQty)
             this.getCarts()
           }).catch(err => {
             console.log(err)
@@ -58,28 +66,6 @@ const useCartStore = defineStore('cart', {
         })
       )
     },
-    // adjustmentTicket (state, cartId, qty, productId) {
-    //   const data = {
-    //     product_id: productId,
-    //     qty
-    //   }
-    //   if (state === '+') {
-    //     data.qty++
-    //     this.updateCartNum(data, cartId)
-    //   } else if (state === '-') {
-    //     data.qty--
-    //     this.updateCartNum(data, cartId)
-    //   }
-    // },
-    // updateCartNum (data, cartId) {
-    //   axios({
-    //     method: 'put',
-    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart/${cartId}`,
-    //     data: { data }
-    //   }).then(res => {
-    //     this.getCarts()
-    //   })
-    // },
     removeCart (cartId) {
       this.isLoading = true
       axios({
@@ -93,7 +79,6 @@ const useCartStore = defineStore('cart', {
     },
     // 在 shrimpView.vue 使用的，將產品加入購物車功能
     addToCart (id) {
-      // this.isLoading = true
       const data = {
         product_id: id,
         qty: this.ticketNum
@@ -103,9 +88,9 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`,
         data: { data }
       }).then(res => {
-        // this.isLoading = false
-        alert(res.data.message)
         this.getCarts() // 重新渲染購物車內產品的數量，使 sidebar 的數字即時更新
+        const addCart = 'addCart'
+        this.success(addCart)
         this.ticketNum = 1
         setTimeout(() => {
           this.shakeState = false
@@ -121,6 +106,14 @@ const useCartStore = defineStore('cart', {
         this.ticketNum++
       } else if (state === '-' && this.ticketNum > 1) {
         this.ticketNum--
+      }
+    },
+    success (act) {
+      const { message } = createDiscreteApi(['message'])
+      if (act === 'addCart') {
+        message.success('加入購物車成功')
+      } else if (act === 'confirmQty') {
+        message.success('更改數量成功')
       }
     }
   }

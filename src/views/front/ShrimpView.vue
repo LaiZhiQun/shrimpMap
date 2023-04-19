@@ -1,10 +1,9 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import useCartStore from '../../stores/cart'
-// import useLoginStore from '../../stores/login'
-import SellShrimp from '../../components/SellInfoModal.vue'
-
+import useCartStore from '@/stores/cart'
+import ShrimpsMore from '@/components/ShrimpsMore.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -15,7 +14,7 @@ export default {
     }
   },
   components: {
-    SellShrimp
+    ShrimpsMore
   },
   methods: {
     getShrimp () {
@@ -35,12 +34,11 @@ export default {
       const isRest = this.business_data.rest === day
       return isRest ? `${day}：休息` : `${day}：${this.business_data.all}`
     },
-    ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets'])
+    ...mapActions(useCartStore, ['addToCart', 'adjustmentTickets', 'success'])
   },
   computed: {
     ...mapState(useCartStore, ['ticketNum', 'isLoading']),
     ...mapWritableState(useCartStore, ['isLoading'])
-    // ...mapState(useLoginStore, ['loginStatus'])
   },
   mounted () {
     this.getShrimp()
@@ -53,9 +51,7 @@ export default {
     <div class="row">
       <div class="col-xl-6 text-white">
         <div class="d-flex justify-content-center">
-          <img style="width: 400px;" class="d-block img-fluid"
-            :src="shrimp.imageUrl"
-            alt="">
+          <img style="width: 400px;" class="d-block img-fluid" :src="shrimp.imageUrl" alt="">
         </div>
         <div class="m-5">
           <h4>其他資訊 <span class="text-danger h6">( 實際資訊以店家為主 )</span></h4>
@@ -69,9 +65,6 @@ export default {
             </div>
             <div class="col-6">
               <h5>消費方式：</h5>
-              <!-- <div v-for="shrimpType in shrimp.shrimp_price" :key="shrimpType">
-                <p>{{ shrimpType }}{{ shrimp.unit }}</p>
-              </div> -->
               <div v-if="shrimp_type.male">{{ shrimp_type.male }}{{ shrimp.unit }}</div>
               <div v-if="shrimp_type.female">{{ shrimp_type.female }}{{ shrimp.unit }}</div>
               <div v-if="shrimp_type.mix">{{ shrimp_type.mix }}{{ shrimp.unit }}</div>
@@ -81,9 +74,6 @@ export default {
         </div>
       </div>
       <div class="col-xl-6 text-white  position-relative">
-        <!-- <div v-if="loginStatus">
-          <a class="text-decoration-none d-block p-3 position-absolute bottom-0 end-0 text-white" href="#"><i class="bi bi-clipboard"></i> 我要賣蝦</a>
-        </div> -->
         <div class="m-5">
           <h2 class="mb-5">{{ shrimp.title }}</h2>
           <p>{{ shrimp.content }}</p>
@@ -115,22 +105,27 @@ export default {
             </div>
           </div>
         </div>
-        <div class="m-xl-5 m-1">
-          <span class="d-inline-block pe-3">數量</span>
-          <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-dash-lg"></i></a>
-          <input type="number" v-model="ticketNum" class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>
-          <a @click.prevent="adjustmentTickets('+')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3" href="#"><i class="bi bi-plus-lg"></i></a>
+        <div class="m-xl-5 m-1 ps-4 ps-xl-0">
+          <span class="d-block mb-2">調整數量</span>
+          <a @click.prevent="adjustmentTickets('-')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3"
+            href="#"><i class="bi bi-dash-lg"></i></a>
+          <input type="number" v-model="ticketNum"
+            class="d-inline-block border border-white py-xl-3 py-2 text-center text-white" disabled>
+          <a @click.prevent="adjustmentTickets('+')" class="d-inline-block border border-white py-xl-3 px-xl-4 py-2 px-3"
+            href="#"><i class="bi bi-plus-lg"></i></a>
         </div>
         <div class="m-5 ps-3 ps-xl-0">
           <span class="d-block fs-6 text-decoration-line-through">原價NT$ {{ shrimp.origin_price }}</span>
           <span class="fs-4">NT$ {{ shrimp.price }}</span>
-          <button @click.prevent="addToCart(shrimp.id)" class="btn btn-lg btn-outline-primary ms-xl-5 my-3 my-lx-0" type="button"><i class="bi bi-cart4"></i><span class="text-white ms-2">加入購物車</span></button>
+          <button @click.prevent="addToCart(shrimp.id)" class="btn btn-lg btn-outline-primary ms-xl-5 my-3 my-lx-0"
+            type="button"><i class="bi bi-cart4"></i><span class="text-white ms-2">加入購物車</span></button>
         </div>
       </div>
     </div>
   </div>
-  <SellShrimp ref="sellModal"></SellShrimp>
+  <ShrimpsMore></ShrimpsMore>
 </template>
+
 <style scoped>
 div a i {
   color: white
@@ -139,8 +134,8 @@ div a i {
 div a:hover i {
   color: #0d6efd
 }
+
 hr {
-    border: 0;
-    border-top: 1px dashed #a2a9b6;
-}
-</style>
+  border: 0;
+  border-top: 1px dashed #a2a9b6;
+}</style>

@@ -25,9 +25,7 @@
                 <form action="/api/thisismycourse2/admin/upload" enctype="multipart/form-data" method="post">
                   <input @change="handleUpload($event)" class="mx-5" type="file" name="file-to-upload">
                 </form>
-                <!-- <button @click="imagePut(tempProduct)" class="mx-5 mt-3" type="button">上傳</button> -->
               </div>
-              <!-- 新增的圖片欄位 -->
 
             </div>
             <!-- 表單 -->
@@ -86,18 +84,18 @@
                     placeholder="請輸入營業時間">
                 </div>
                 <div class="mb-3 col-md-6">
-                <label for="restTime" class="form-label text-dark">休息日</label>
-                <select id="restTime" v-model="tempProduct.business_data.rest" class="form-select">
-                  <option disabled value="">請選擇休息日</option>
-                  <option value="星期一">星期一</option>
-                  <option value="星期二">星期二</option>
-                  <option value="星期三">星期三</option>
-                  <option value="星期四">星期四</option>
-                  <option value="星期五">星期五</option>
-                  <option value="星期六">星期六</option>
-                  <option value="星期日">星期日</option>
-                </select>
-              </div>
+                  <label for="restTime" class="form-label text-dark">休息日</label>
+                  <select id="restTime" v-model="tempProduct.business_data.rest" class="form-select">
+                    <option disabled value="">請選擇休息日</option>
+                    <option value="星期一">星期一</option>
+                    <option value="星期二">星期二</option>
+                    <option value="星期三">星期三</option>
+                    <option value="星期四">星期四</option>
+                    <option value="星期五">星期五</option>
+                    <option value="星期六">星期六</option>
+                    <option value="星期日">星期日</option>
+                  </select>
+                </div>
                 <div class="mb-3 col-md-6">
                   <label for="price" class="form-label text-dark">店家電話</label>
                   <input id="price" v-model="tempProduct.phone" type="number" min="0" class="form-control"
@@ -107,7 +105,7 @@
               <div class="mb-3">
                 <label for="content" class="form-label text-dark">地址</label>
                 <input id="description" v-model="tempProduct.content" type="text" class="form-control"
-                placeholder="請輸入店家地址">
+                  placeholder="請輸入店家地址">
               </div>
               <hr>
               <div class="mb-3">
@@ -117,24 +115,24 @@
               </div>
               <div class="row">
                 <div class="mb-3 col-md-6">
-                    <label for="cast1" class="form-label text-dark">蝦池1</label>
-                    <input id="cast1" v-model="tempProduct.shrimp_type.male" type="text"  class="form-control"
-                      placeholder="公蝦池 售價">
+                  <label for="cast1" class="form-label text-dark">蝦池1</label>
+                  <input id="cast1" v-model="tempProduct.shrimp_type.male" type="text" class="form-control"
+                    placeholder="公蝦池 售價">
                 </div>
                 <div class="mb-3 col-md-6">
-                    <label for="cast2" class="form-label text-dark">蝦池2</label>
-                    <input id="cast2" v-model="tempProduct.shrimp_type.female" type="text"  class="form-control"
-                      placeholder="母蝦池 售價">
+                  <label for="cast2" class="form-label text-dark">蝦池2</label>
+                  <input id="cast2" v-model="tempProduct.shrimp_type.female" type="text" class="form-control"
+                    placeholder="母蝦池 售價">
                 </div>
                 <div class="mb-3 col-md-6">
-                    <label for="cast3" class="form-label text-dark">蝦池3</label>
-                    <input id="cast3" v-model="tempProduct.shrimp_type.mix" type="text"  class="form-control"
-                      placeholder="綜合池 售價">
+                  <label for="cast3" class="form-label text-dark">蝦池3</label>
+                  <input id="cast3" v-model="tempProduct.shrimp_type.mix" type="text" class="form-control"
+                    placeholder="綜合池 售價">
                 </div>
                 <div class="mb-3 col-md-6">
-                    <label for="cast4" class="form-label text-dark">蝦池4</label>
-                    <input id="cast4" v-model="tempProduct.shrimp_type.dragon" type="text"  class="form-control"
-                      placeholder="龍蝦池 售價">
+                  <label for="cast4" class="form-label text-dark">蝦池4</label>
+                  <input id="cast4" v-model="tempProduct.shrimp_type.dragon" type="text" class="form-control"
+                    placeholder="龍蝦池 售價">
                 </div>
               </div>
               <div class="mb-3">
@@ -163,6 +161,7 @@
 <script>
 import modalMixin from '../mixins/modalMixin'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   props: ['product', 'isNew'],
   data () {
@@ -206,26 +205,6 @@ export default {
         console.log(err)
       })
     }
-    // 上傳圖片
-    // imagePut (tempProduct) {
-    //   const data = {
-    //     title: tempProduct.title,
-    //     category: tempProduct.category,
-    //     unit: tempProduct.unit,
-    //     origin_price: tempProduct.origin_price,
-    //     price: tempProduct.price,
-    //     imageUrl: this.newImage
-    //   }
-    //   this.$http({
-    //     method: 'put',
-    //     url: `${VITE_APP_URL}api/${VITE_APP_PATH}/admin/product/${tempProduct.id}`,
-    //     data: { data }
-    //   }).then(res => {
-    //     alert('圖片更改成功')
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
-    // }
   }
 }
 </script>

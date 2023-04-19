@@ -1,8 +1,8 @@
 <script>
 import { mapActions } from 'pinia'
-import useCartStore from '../../stores/cart'
-
+import useCartStore from '@/stores/cart'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -39,32 +39,34 @@ export default {
   }
 }
 </script>
+
 <template>
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="my-5 row justify-content-center text-white">
     <VForm ref="form" class="col-md-6 col-7" v-slot="{ errors }" @submit="createOrder">
+      <p class="text-danger">*為必填選項</p>
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
         <VField id="email" name="email" type="email" class="form-control" :class="{ 'is-invalid': errors['email'] }"
           placeholder="請輸入 Email" rules="email|required" v-model="form.user.email"></VField>
         <error-message name="email" class="invalid-feedback"></error-message>
       </div>
       <div class="mb-3">
-        <label for="name" class="form-label">收件人姓名</label>
+        <label for="name" class="form-label"><span class="text-danger">*</span> 收件人姓名</label>
         <VField id="name" name="姓名" type="text" class="form-control" :class="{ 'is-invalid': errors['姓名'] }"
           placeholder="請輸入姓名" rules="required" v-model="form.user.name"></VField>
         <error-message name="姓名" class="invalid-feedback"></error-message>
       </div>
 
       <div class="mb-3">
-        <label for="tel" class="form-label">收件人電話</label>
+        <label for="tel" class="form-label"><span class="text-danger">*</span> 收件人電話</label>
         <VField id="tel" name="電話" type="text" class="form-control" :class="{ 'is-invalid': errors['電話'] }"
           placeholder="請輸入電話" rules="required|min:8|max:10" v-model="form.user.tel"></VField>
         <error-message name="電話" class="invalid-feedback"></error-message>
       </div>
 
       <div class="mb-3">
-        <label for="address" class="form-label">收件人地址</label>
+        <label for="address" class="form-label"><span class="text-danger">*</span> 收件人地址</label>
         <VField id="address" name="地址" type="text" class="form-control" :class="{ 'is-invalid': errors['地址'] }"
           placeholder="請輸入地址" rules="required" v-model="form.user.address"></VField>
         <error-message name="地址" class="invalid-feedback"></error-message>
