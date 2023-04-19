@@ -6,10 +6,6 @@ import useIntoCityStore from '@/stores/intoCity'
 import useLoginStore from '@/stores/login'
 
 export default {
-  // data () {
-  //   return {
-  //   }
-  // },
   components: {
     RouterLink
   },

@@ -1,7 +1,7 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia'
 import useCartStore from '@/stores/cart'
-import SellShrimp from '@/components/SellInfoModal.vue'
+import ShrimpsMore from '@/components/ShrimpsMore.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
 export default {
@@ -14,7 +14,7 @@ export default {
     }
   },
   components: {
-    SellShrimp
+    ShrimpsMore
   },
   methods: {
     getShrimp () {
@@ -123,7 +123,7 @@ export default {
       </div>
     </div>
   </div>
-  <SellShrimp ref="sellModal"></SellShrimp>
+  <ShrimpsMore></ShrimpsMore>
 </template>
 
 <style scoped>

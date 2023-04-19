@@ -23,9 +23,8 @@ const useCartStore = defineStore('cart', {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/cart`
       }).then(res => {
         this.cart = res.data.data
-        console.log(Array.isArray(this.cart.carts))
         if (this.cart.carts.length === 0) {
-          alert('尚未挑選商品喔，將轉到首頁')
+          alert('目前購物車是空的，即將轉到首頁')
           router.push('/')
         }
         this.isLoading = false
