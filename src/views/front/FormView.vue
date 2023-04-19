@@ -27,12 +27,12 @@ export default {
         url: `${VITE_APP_URL}api/${VITE_APP_PATH}/order`,
         data: { data: order }
       }).then((response) => {
-        alert(response.data.message)
+        // alert(response.data.message)
         this.$refs.form.resetForm()
         this.form.message = ''
         this.getCarts()
         this.isLoading = false
-        this.$router.push('/')
+        this.$router.push('/orderSuccess')
       })
     },
     ...mapActions(useCartStore, ['getCarts'])
